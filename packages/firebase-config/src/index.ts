@@ -18,3 +18,4 @@ export const auth = getAuth(app);
 export * from "./services/auth";
 export * from "./services/user";
 export * from "./services/admin";
+export * from "./services/payment";
