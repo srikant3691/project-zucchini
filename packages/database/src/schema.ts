@@ -29,18 +29,15 @@ export const transactionsTable = pgTable("transactions", {
     .notNull()
     .unique()
     .references(() => usersTable.id, { onDelete: "cascade" }),
-  paymentReceipt: text().notNull(),
   transactionId: varchar({ length: 255 }).notNull(),
   paymentMethod: paymentMethodEnum(),
   isVerified: boolean().notNull().default(false),
-  verifiedAt: timestamp(),
   createdAt: timestamp().notNull().defaultNow(),
   updatedAt: timestamp().notNull().defaultNow(),
 });
 
 export const adminsTable = pgTable("admins", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  firebaseUid: varchar({ length: 128 }).notNull().unique(),
   email: varchar({ length: 255 }).notNull().unique(),
   name: varchar({ length: 255 }),
   createdAt: timestamp().notNull().defaultNow(),
