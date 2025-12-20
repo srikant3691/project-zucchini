@@ -11,7 +11,12 @@ export async function POST(request: NextRequest) {
 
     if (body.teamLeader && body.teammate1 && body.teammate2) {
       const teamData = body as TeamMunRegistration;
-      const { isNitrStudent = false } = body;
+
+      // Extract individual NITR status from each team member
+      // isNitrStudent is added by frontend but not part of MunRegistration schema
+      const leaderIsNitr = (body.teamLeader as any).isNitrStudent || false;
+      const teammate1IsNitr = (body.teammate1 as any).isNitrStudent || false;
+      const teammate2IsNitr = (body.teammate2 as any).isNitrStudent || false;
 
       if (teamData.teamLeader.dateOfBirth && typeof teamData.teamLeader.dateOfBirth === "string") {
         teamData.teamLeader.dateOfBirth = new Date(teamData.teamLeader.dateOfBirth);
@@ -30,7 +35,9 @@ export async function POST(request: NextRequest) {
         auth.uid,
         null,
         null,
-        isNitrStudent
+        leaderIsNitr,
+        teammate1IsNitr,
+        teammate2IsNitr
       );
 
       return handleResponse(result, 201);

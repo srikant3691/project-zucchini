@@ -29,6 +29,7 @@ interface MunRegistrationFormProps {
   clearUserDetails?: boolean;
   isNitrStudent: boolean;
   setIsNitrStudent: (value: boolean) => void;
+  onBack?: () => void;
 }
 
 export default function MunRegistrationForm({
@@ -41,6 +42,7 @@ export default function MunRegistrationForm({
   clearUserDetails = false,
   isNitrStudent,
   setIsNitrStudent,
+  onBack,
 }: MunRegistrationFormProps) {
   const processedInitialData: Partial<MunRegistration> = initialData
     ? {
@@ -95,7 +97,6 @@ export default function MunRegistrationForm({
       return;
     }
 
-    // Convert dateOfBirth string to Date object for Zod validation
     const registrationData = {
       ...formData,
       dateOfBirth:
@@ -121,27 +122,26 @@ export default function MunRegistrationForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {!hideCommitteeChoice && (
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <label className="flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              checked={isNitrStudent}
-              onChange={(e) => setIsNitrStudent(e.target.checked)}
-              className="w-4 h-4 text-blue-600 focus:ring-blue-500 rounded"
-            />
-            <span className="ml-2 text-sm font-semibold text-blue-900">I am from NIT Rourkela</span>
-          </label>
-          {isNitrStudent && (
-            <p className="mt-2 text-xs text-blue-700">
-              Your college information will be auto-filled and you won't need to pay registration
-              fees.
-            </p>
-          )}
-        </div>
-      )}
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <label className="flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            checked={isNitrStudent}
+            onChange={(e) => setIsNitrStudent(e.target.checked)}
+            className="w-4 h-4 text-blue-600 focus:ring-blue-500 rounded"
+          />
+          <span className="ml-2 text-sm font-semibold text-blue-900">
+            {stepTitle ? `Is ${stepTitle} from NIT Rourkela?` : "I am from NIT Rourkela"}
+          </span>
+        </label>
+        {isNitrStudent && (
+          <p className="mt-2 text-xs text-blue-700">
+            College information will be auto-filled and locked.
+            {!hideCommitteeChoice && " You won't need to pay registration fees."}
+          </p>
+        )}
+      </div>
 
-      {/* Basic Information */}
       <FormSection title="Basic Information">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {renderFormFields(
@@ -156,13 +156,12 @@ export default function MunRegistrationForm({
         </div>
       </FormSection>
 
-      {/* College/Institute Details */}
       <FormSection title="College / Institute Details">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {renderFormFields(
             collegeInfoFields.map((field) => ({
               ...field,
-              disabled:
+              readonly:
                 isNitrStudent &&
                 (field.name === "studentType" ||
                   field.name === "institute" ||
@@ -175,7 +174,6 @@ export default function MunRegistrationForm({
             handleFieldChange
           )}
 
-          {/* ID Card Upload */}
           <div className="md:col-span-2">
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               College/University ID Card <span className="text-red-500">*</span>
@@ -190,7 +188,6 @@ export default function MunRegistrationForm({
         </div>
       </FormSection>
 
-      {/* MUN Details - Only show for team leader or individual registration */}
       {!hideCommitteeChoice && (
         <FormSection title="MUN Details">
           <div className="space-y-6">
@@ -211,7 +208,6 @@ export default function MunRegistrationForm({
               </div>
             ))}
 
-            {/* Previous Participation */}
             <div>
               <label className="flex items-center cursor-pointer">
                 <input
@@ -229,14 +225,12 @@ export default function MunRegistrationForm({
         </FormSection>
       )}
 
-      {/* Emergency & Safety Details */}
       <FormSection title="Emergency & Safety Details">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {renderFormFields(emergencyFields, formData, errors, handleFieldChange)}
         </div>
       </FormSection>
 
-      {/* Declaration & Consent */}
       <FormSection title="Declaration & Consent">
         <div className="space-y-3">
           <label className="flex items-start cursor-pointer">
@@ -258,11 +252,28 @@ export default function MunRegistrationForm({
       </FormSection>
 
       <ErrorDisplay error={submitError} />
-      <SubmitButton
-        isSubmitting={false}
-        loadingText="Registering..."
-        submitText={getSubmitButtonText()}
-      />
+
+      <div className="flex justify-between items-center pt-4">
+        {onBack && (
+          <button
+            type="button"
+            onClick={onBack}
+            className="px-6 py-3 bg-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-300 transition-all duration-200 shadow-md hover:shadow-lg"
+          >
+            ← Back
+          </button>
+        )}
+
+        <div className={onBack ? "" : "ml-auto"}>
+          <button
+            type="submit"
+            disabled={false}
+            className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {getSubmitButtonText()}
+          </button>
+        </div>
+      </div>
     </form>
   );
 }

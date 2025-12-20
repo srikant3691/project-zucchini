@@ -81,7 +81,9 @@ export const registerMunTeam = async (
   leaderFirebaseUid: string,
   teammate1FirebaseUid: string | null,
   teammate2FirebaseUid: string | null,
-  isNitrStudent: boolean = false
+  leaderIsNitrStudent: boolean = false,
+  teammate1IsNitrStudent: boolean = false,
+  teammate2IsNitrStudent: boolean = false
 ) => {
   const emails = [teamLeader.email, teammate1.email, teammate2.email];
   for (const email of emails) {
@@ -100,24 +102,24 @@ export const registerMunTeam = async (
         teamId,
         isTeamLeader: true,
         ...teamLeader,
-        isNitrStudent,
-        isVerified: isNitrStudent, // Auto-verify NITR students
+        isNitrStudent: leaderIsNitrStudent,
+        isVerified: leaderIsNitrStudent, // Auto-verify NITR students
       },
       {
         firebaseUid: teammate1FirebaseUid,
         teamId,
         isTeamLeader: false,
         ...teammate1,
-        isNitrStudent,
-        isVerified: isNitrStudent,
+        isNitrStudent: teammate1IsNitrStudent,
+        isVerified: teammate1IsNitrStudent,
       },
       {
         firebaseUid: teammate2FirebaseUid,
         teamId,
         isTeamLeader: false,
         ...teammate2,
-        isNitrStudent,
-        isVerified: isNitrStudent,
+        isNitrStudent: teammate2IsNitrStudent,
+        isVerified: teammate2IsNitrStudent,
       },
     ])
     .returning();

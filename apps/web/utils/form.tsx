@@ -138,6 +138,8 @@ export function renderFormField<T extends Record<string, any>>(
         error={errors[radioField.name as keyof T]}
         required={radioField.required}
         className={gridClass}
+        readonly={radioField.readonly}
+        disabled={radioField.disabled}
       />
     );
   }
@@ -158,6 +160,8 @@ export function renderFormField<T extends Record<string, any>>(
         required={selectField.required}
         helperText={selectField.helperText}
         className={gridClass}
+        readonly={selectField.readonly}
+        disabled={selectField.disabled}
       />
     );
   }

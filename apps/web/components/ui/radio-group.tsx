@@ -12,6 +12,8 @@ interface RadioGroupProps {
   error?: string;
   required?: boolean;
   className?: string;
+  readonly?: boolean;
+  disabled?: boolean;
 }
 
 export default function RadioGroup({
@@ -23,6 +25,8 @@ export default function RadioGroup({
   error,
   required = false,
   className = "",
+  readonly = false,
+  disabled = false,
 }: RadioGroupProps) {
   return (
     <div className={className}>
@@ -38,6 +42,7 @@ export default function RadioGroup({
               value={option.value}
               checked={value === option.value}
               onChange={(e) => onChange(e.target.value)}
+              disabled={readonly || disabled}
               className="w-4 h-4 text-blue-600 focus:ring-blue-500"
             />
             <span className="ml-2 text-gray-700">{option.label}</span>

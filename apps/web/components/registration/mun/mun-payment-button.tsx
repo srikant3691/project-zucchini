@@ -13,6 +13,7 @@ interface MunPaymentButtonProps {
   committeeChoice: string;
   onPaymentSuccess?: () => void;
   onPaymentFailure?: (error: string) => void;
+  nonNitrCount?: number;
 }
 
 export default function MunPaymentButton({
@@ -22,6 +23,7 @@ export default function MunPaymentButton({
   committeeChoice,
   onPaymentSuccess,
   onPaymentFailure,
+  nonNitrCount,
 }: MunPaymentButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
   const initiateOrderApi = useApi<{ orderId: string; amount: number }>();
@@ -91,7 +93,8 @@ export default function MunPaymentButton({
   };
 
   const baseFee = studentType === "COLLEGE" ? munAmount.college : munAmount.school;
-  const displayAmount = committeeChoice === "MOOT_COURT" ? baseFee * 3 : baseFee;
+  const memberCount = committeeChoice === "MOOT_COURT" ? (nonNitrCount ?? 3) : 1;
+  const displayAmount = baseFee * memberCount;
 
   return (
     <>
@@ -101,7 +104,8 @@ export default function MunPaymentButton({
           <p className="text-2xl font-bold text-blue-600">₹{displayAmount}</p>
           <p className="text-sm text-blue-700 mt-1">
             {studentType === "COLLEGE" ? "College Student" : "School Student"}
-            {committeeChoice === "MOOT_COURT" && " - Team of 3"}
+            {committeeChoice === "MOOT_COURT" &&
+              ` - ${memberCount} ${memberCount === 1 ? "member" : "members"} paying`}
           </p>
         </div>
 

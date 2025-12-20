@@ -14,6 +14,8 @@ interface SelectFieldProps {
   required?: boolean;
   helperText?: string;
   className?: string;
+  readonly?: boolean;
+  disabled?: boolean;
 }
 
 export default function SelectField({
@@ -27,6 +29,8 @@ export default function SelectField({
   required = false,
   helperText,
   className = "",
+  readonly = false,
+  disabled = false,
 }: SelectFieldProps) {
   return (
     <div className={className}>
@@ -37,9 +41,10 @@ export default function SelectField({
         name={name}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        disabled={readonly || disabled}
         className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
           error ? "border-red-500" : "border-gray-300"
-        }`}
+        } ${readonly || disabled ? "bg-gray-100 cursor-not-allowed" : ""}`}
       >
         <option value="">{placeholder}</option>
         {options.map((option) => (

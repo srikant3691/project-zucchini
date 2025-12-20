@@ -51,7 +51,11 @@ export default function MunRegisterPage() {
   const [error, setError] = useState<string | null>(null);
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [isTeamRegistration, setIsTeamRegistration] = useState(false);
-  const [isNitrStudent, setIsNitrStudent] = useState(false);
+  const [teamNitrStatus, setTeamNitrStatus] = useState({
+    leader: false,
+    teammate1: false,
+    teammate2: false,
+  });
   const [teamData, setTeamData] = useState<TeamData>({
     leader: null,
     teammate1: null,
@@ -64,7 +68,7 @@ export default function MunRegisterPage() {
     const savedTeamData = localStorage.getItem("munTeamRegistration");
     const savedStep = localStorage.getItem("munCurrentStep");
     const savedIsTeamReg = localStorage.getItem("munIsTeamRegistration");
-    const savedIsNitrStudent = localStorage.getItem("munIsNitrStudent");
+    const savedTeamNitrStatus = localStorage.getItem("munTeamNitrStatus");
 
     if (savedTeamData) {
       try {
@@ -86,8 +90,14 @@ export default function MunRegisterPage() {
       }
     }
 
-    if (savedIsNitrStudent) {
-      setIsNitrStudent(savedIsNitrStudent === "true");
+    if (savedTeamNitrStatus) {
+      try {
+        const parsed = JSON.parse(savedTeamNitrStatus);
+        setTeamNitrStatus(parsed);
+      } catch (error) {
+        console.error("Failed to parse saved team NITR status:", error);
+        localStorage.removeItem("munTeamNitrStatus");
+      }
     }
   }, []);
 
@@ -164,8 +174,7 @@ export default function MunRegisterPage() {
       localStorage.setItem("munIsTeamRegistration", "true");
 
       if (currentStep === "form" || currentStep === "form-leader") {
-        setIsNitrStudent(isNitrStudent);
-        localStorage.setItem("munIsNitrStudent", String(isNitrStudent));
+        localStorage.setItem("munTeamNitrStatus", JSON.stringify(teamNitrStatus));
 
         const updatedTeamData = { ...teamData, leader: registrationData };
         setTeamData(updatedTeamData);
@@ -173,6 +182,8 @@ export default function MunRegisterPage() {
         localStorage.setItem("munCurrentStep", "form-teammate1");
         setCurrentStep("form-teammate1");
       } else if (currentStep === "form-teammate1") {
+        localStorage.setItem("munTeamNitrStatus", JSON.stringify(teamNitrStatus));
+
         const updatedTeamData = { ...teamData, teammate1: registrationData };
         setTeamData(updatedTeamData);
         localStorage.setItem("munTeamRegistration", JSON.stringify(updatedTeamData));
@@ -187,18 +198,20 @@ export default function MunRegisterPage() {
           setIsLoading(true);
           setError(null);
 
+          const allNitrStudents =
+            teamNitrStatus.leader && teamNitrStatus.teammate1 && teamNitrStatus.teammate2;
+
           await registerTeam("mun/register", {
             method: "POST",
             body: JSON.stringify({
-              teamLeader: updatedTeamData.leader,
-              teammate1: updatedTeamData.teammate1,
-              teammate2: updatedTeamData.teammate2,
-              isNitrStudent,
+              teamLeader: { ...updatedTeamData.leader, isNitrStudent: teamNitrStatus.leader },
+              teammate1: { ...updatedTeamData.teammate1, isNitrStudent: teamNitrStatus.teammate1 },
+              teammate2: { ...updatedTeamData.teammate2, isNitrStudent: teamNitrStatus.teammate2 },
             }),
           });
 
           toast.success("Team registration successful!", {
-            description: isNitrStudent
+            description: allNitrStudents
               ? "Your team registration is complete. No payment required for NIT Rourkela students."
               : "Please proceed to payment to complete your team registration.",
           });
@@ -210,11 +223,11 @@ export default function MunRegisterPage() {
             committeeChoice,
           });
 
-          if (isNitrStudent) {
+          if (allNitrStudents) {
             localStorage.removeItem("munTeamRegistration");
             localStorage.removeItem("munCurrentStep");
             localStorage.removeItem("munIsTeamRegistration");
-            localStorage.removeItem("munIsNitrStudent");
+            localStorage.removeItem("munTeamNitrStatus");
             setCurrentStep("complete");
           } else {
             localStorage.setItem("munCurrentStep", "payment");
@@ -234,7 +247,7 @@ export default function MunRegisterPage() {
     } else {
       setIsTeamRegistration(false);
       localStorage.setItem("munIsTeamRegistration", "false");
-      localStorage.setItem("munIsNitrStudent", String(isNitrStudent));
+      localStorage.setItem("munTeamNitrStatus", JSON.stringify(teamNitrStatus));
 
       try {
         setIsLoading(true);
@@ -244,13 +257,13 @@ export default function MunRegisterPage() {
           method: "POST",
           body: JSON.stringify({
             ...registrationData,
-            isNitrStudent,
+            isNitrStudent: teamNitrStatus.leader,
           }),
         });
         console.log(res);
 
         toast.success("Registration successful!", {
-          description: isNitrStudent
+          description: teamNitrStatus.leader
             ? "Your registration is complete. No payment required for NIT Rourkela students."
             : "Please proceed to payment to complete your registration.",
         });
@@ -262,7 +275,7 @@ export default function MunRegisterPage() {
           committeeChoice,
         });
 
-        if (isNitrStudent) {
+        if (teamNitrStatus.leader) {
           setCurrentStep("complete");
         } else {
           localStorage.setItem("munCurrentStep", "payment");
@@ -290,6 +303,16 @@ export default function MunRegisterPage() {
 
   const handlePaymentFailure = (errorMessage: string) => {
     setPaymentError(errorMessage);
+  };
+
+  const handleBackStep = () => {
+    if (currentStep === "form-teammate2") {
+      setCurrentStep("form-teammate1");
+      localStorage.setItem("munCurrentStep", "form-teammate1");
+    } else if (currentStep === "form-teammate1") {
+      setCurrentStep("form-leader");
+      localStorage.setItem("munCurrentStep", "form-leader");
+    }
   };
 
   if (isLoading) {
@@ -333,8 +356,10 @@ export default function MunRegisterPage() {
                 onComplete={(studentType, committeeChoice, registrationData) =>
                   handleRegistrationComplete(studentType, committeeChoice, registrationData)
                 }
-                isNitrStudent={isNitrStudent}
-                setIsNitrStudent={setIsNitrStudent}
+                isNitrStudent={teamNitrStatus.leader}
+                setIsNitrStudent={(value) =>
+                  setTeamNitrStatus({ ...teamNitrStatus, leader: value })
+                }
               />
             </div>
           )}
@@ -362,8 +387,11 @@ export default function MunRegisterPage() {
                 onComplete={(studentType, committeeChoice, registrationData) =>
                   handleRegistrationComplete(studentType, committeeChoice, registrationData)
                 }
-                isNitrStudent={isNitrStudent}
-                setIsNitrStudent={setIsNitrStudent}
+                isNitrStudent={teamNitrStatus.teammate1}
+                setIsNitrStudent={(value) =>
+                  setTeamNitrStatus({ ...teamNitrStatus, teammate1: value })
+                }
+                onBack={handleBackStep}
               />
             </div>
           )}
@@ -391,8 +419,11 @@ export default function MunRegisterPage() {
                 onComplete={(studentType, committeeChoice, registrationData) =>
                   handleRegistrationComplete(studentType, committeeChoice, registrationData)
                 }
-                isNitrStudent={isNitrStudent}
-                setIsNitrStudent={setIsNitrStudent}
+                isNitrStudent={teamNitrStatus.teammate2}
+                setIsNitrStudent={(value) =>
+                  setTeamNitrStatus({ ...teamNitrStatus, teammate2: value })
+                }
+                onBack={handleBackStep}
               />
             </div>
           )}
@@ -417,6 +448,17 @@ export default function MunRegisterPage() {
                 committeeChoice={userData.committeeChoice || "OVERNIGHT_CRISIS"}
                 onPaymentSuccess={handlePaymentSuccess}
                 onPaymentFailure={handlePaymentFailure}
+                nonNitrCount={
+                  userData.committeeChoice === "MOOT_COURT"
+                    ? [
+                        teamNitrStatus.leader,
+                        teamNitrStatus.teammate1,
+                        teamNitrStatus.teammate2,
+                      ].filter((isNitr) => !isNitr).length
+                    : teamNitrStatus.leader
+                      ? 0
+                      : 1
+                }
               />
             </div>
           )}
