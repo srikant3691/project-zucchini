@@ -8,12 +8,20 @@ interface RegistrationPaymentButtonProps {
   userName: string;
   userEmail: string;
   onPaymentFailure?: (error: string) => void;
+  isCollegeStudent?: boolean;
+  committeeChoice?: string;
+  type?: string;
+  teamId?: string;
 }
 
 export default function RegistrationPaymentButton({
   userName,
   userEmail,
   onPaymentFailure,
+  isCollegeStudent,
+  committeeChoice,
+  type,
+  teamId,
 }: RegistrationPaymentButtonProps) {
   const { execute, loading: isLoading } = useApi({
     onError(error) {
@@ -23,21 +31,28 @@ export default function RegistrationPaymentButton({
   });
 
   const handleSubmit = async () => {
+    if (!teamId) {
+      toast.error("Team ID is required");
+      return;
+    }
     const result = await execute("pay", {
       method: "POST",
       body: JSON.stringify({
         name: userName,
         email: userEmail,
-        type: "NITRUTSAV",
+        type: type || "NITRUTSAV",
+        isCollegeStudent,
+        committeeChoice,
+        teamId,
       }),
     });
 
-    if (!result) {
-      onPaymentFailure?.("Failed to initiate payment");
+    if (!result.success) {
+      onPaymentFailure?.(result.error || "Failed to initiate payment");
       return;
     }
 
-    const { url, ...params } = result as { url: string; params: Record<string, string> };
+    const { url, ...params } = result.data as { url: string; params: Record<string, string> };
 
     const form = document.createElement("form");
     form.method = "POST";

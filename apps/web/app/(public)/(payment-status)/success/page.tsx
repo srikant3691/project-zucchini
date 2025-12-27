@@ -36,15 +36,15 @@ export default function Success() {
           return;
         }
 
-        const res = (await execute(`verify?txnid=${txnid}`, {
+        const res = await execute(`verify?txnid=${txnid}`, {
           method: "GET",
-        })) as TransactionDetails | null;
+        });
 
-        if (!res) {
+        if (!res.success) {
           toast.error("Failed to verify payment!");
           setPaymentStatus("failure");
-        } else if (res.isVerified) {
-          setTransactionDetails(res);
+        } else if (res.data?.isVerified) {
+          setTransactionDetails(res.data as TransactionDetails);
           setPaymentStatus("success");
           toast.success("Payment verified successfully!");
         } else {
@@ -57,7 +57,7 @@ export default function Success() {
     return () => unsubscribe();
   }, []);
 
-  if (isLoading) return <LoadingState />;
+  if (isLoading || paymentStatus === "pending") return <LoadingState />;
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">

@@ -23,6 +23,14 @@ export const updatePaymentStatusByTxnId = async (txnId: string, isVerified: bool
       .where(eq(transactionsTable.txnId, txnId))
       .returning();
 
+    if (transaction?.teamId) {
+      await db
+        .update(munRegistrationsTable)
+        .set({ isVerified })
+        .where(eq(munRegistrationsTable.teamId, transaction.teamId));
+      return true;
+    }
+
     if (!transaction || !transaction.userId) {
       throw new ApiError(400, "Transaction has no associated user");
     }
@@ -83,118 +91,4 @@ export const createTransaction = async (
     .returning();
 
   return transaction;
-};
-
-export const getTransactionByTxnId = async (txnId: string) => {
-  const [transaction] = await db
-    .select()
-    .from(transactionsTable)
-    .where(eq(transactionsTable.txnId, txnId));
-
-  return transaction || null;
-};
-
-export const updatePaymentStatus = async (userId: number, amount: number) => {
-  const [user] = await db.select().from(usersTable).where(eq(usersTable.id, userId));
-
-  if (!user) {
-    throw new ApiError(404, "User not found");
-  }
-
-  const txnId = generateTxnId("NITRUTSAV");
-
-  await db.update(usersTable).set({ isVerified: true }).where(eq(usersTable.id, userId));
-
-  const [transaction] = await db
-    .insert(transactionsTable)
-    .values({
-      userId,
-      txnId,
-      type: "NITRUTSAV",
-      amount,
-      isVerified: true,
-    })
-    .returning();
-
-  if (!transaction) {
-    throw new ApiError(500, "Failed to create transaction");
-  }
-
-  return {
-    message: "Payment verified successfully",
-    txnId: transaction.txnId,
-  };
-};
-
-export const getPaymentStatus = async (userId: number) => {
-  const [user] = await db.select().from(usersTable).where(eq(usersTable.id, userId));
-
-  if (!user) {
-    throw new ApiError(404, "User not found");
-  }
-
-  const [transaction] = await db
-    .select()
-    .from(transactionsTable)
-    .where(eq(transactionsTable.userId, userId));
-
-  if (!transaction) {
-    return {
-      isVerified: false,
-      txnId: null,
-      amount: null,
-    };
-  }
-
-  return {
-    isVerified: transaction.isVerified,
-    txnId: transaction.txnId,
-    amount: transaction.amount,
-  };
-};
-
-export const updateMunPaymentStatus = async (munRegistrationId: number, amount: number) => {
-  const [munUser] = await db
-    .select()
-    .from(munRegistrationsTable)
-    .where(eq(munRegistrationsTable.id, munRegistrationId));
-
-  if (!munUser) {
-    throw new ApiError(404, "MUN registration not found");
-  }
-
-  const teamId = munUser.teamId || munUser.firebaseUid || `individual-${munUser.id}`;
-  const txnId = generateTxnId("MUN");
-
-  if (munUser.teamId) {
-    await db
-      .update(munRegistrationsTable)
-      .set({ isVerified: true })
-      .where(eq(munRegistrationsTable.teamId, munUser.teamId));
-  } else {
-    await db
-      .update(munRegistrationsTable)
-      .set({ isVerified: true })
-      .where(eq(munRegistrationsTable.id, munRegistrationId));
-  }
-
-  const [transaction] = await db
-    .insert(transactionsTable)
-    .values({
-      teamId,
-      txnId,
-      type: "MUN",
-      amount,
-      isVerified: true,
-    })
-    .returning();
-
-  if (!transaction) {
-    throw new ApiError(500, "Failed to create transaction");
-  }
-
-  return {
-    message: "MUN payment verified successfully",
-    txnId: transaction.txnId,
-  };
 };

@@ -46,7 +46,7 @@ function calculateAmount(
     return NITRUTSAV_FEE;
   } else {
     const baseFee = isCollegeStudent ? MUN_FEE.college : MUN_FEE.school;
-    return committeeChoice == "MOOT_COURT" ? baseFee * 3 : baseFee;
+    return committeeChoice === "MOOT_COURT" ? baseFee * 3 : baseFee;
   }
 }
 

@@ -222,7 +222,6 @@ export const collegeOptions: CollegeOption[] = [
     city: "Vellore",
     state: "Tamil Nadu",
   },
-  // ITER SOA is banned - removed from options
   {
     label: "Trident Academy of Technology, Bhubaneswar (Trident BBSR)",
     value: "Trident Academy of Technology, Bhubaneswar (Trident BBSR)",

@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 interface Option {
   label: string;
   value: string;
+  disabled?: boolean;
 }
 
 interface SearchableSelectProps {
@@ -160,14 +161,17 @@ export default function SearchableSelect({
               filteredOptions.map((option) => (
                 <div
                   key={option.value}
-                  onClick={() => handleSelect(option.value)}
-                  className={`px-4 py-2 cursor-pointer transition-colors ${
-                    option.value === value
-                      ? "bg-blue-50 text-blue-700"
-                      : "hover:bg-gray-50 text-gray-700"
+                  onClick={() => !option.disabled && handleSelect(option.value)}
+                  className={`px-4 py-2 transition-colors ${
+                    option.disabled
+                      ? "text-gray-400 cursor-not-allowed bg-gray-50"
+                      : option.value === value
+                        ? "bg-blue-50 text-blue-700 cursor-pointer"
+                        : "hover:bg-gray-50 text-gray-700 cursor-pointer"
                   } ${option.value === "others" ? "border-t border-gray-100 font-medium text-blue-600" : ""}`}
                 >
                   {option.label}
+                  {option.disabled && <span className="ml-2 text-xs">(Not available)</span>}
                 </div>
               ))
             ) : (

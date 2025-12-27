@@ -109,18 +109,17 @@ export const MunRegistrationSchema = z
   })
   .refine(
     (data) => {
-      // School students cannot register for Overnight Crisis Committees
-      const overnightCrisisCommittees = ["UNSC_OVERNIGHT_CRISIS", "AIPPM_OVERNIGHT_CRISIS"];
-      if (
-        data.studentType === "SCHOOL" &&
-        overnightCrisisCommittees.includes(data.committeeChoice)
-      ) {
+      // School students can only participate in: UNHRC, DISEC, AIPPM, ECOSOC, IP
+      // They cannot register for Overnight Crisis Committees or Moot Court
+      const restrictedForSchool = ["UNSC_OVERNIGHT_CRISIS", "AIPPM_OVERNIGHT_CRISIS", "MOOT_COURT"];
+      if (data.studentType === "SCHOOL" && restrictedForSchool.includes(data.committeeChoice)) {
         return false;
       }
       return true;
     },
     {
-      message: "School students are not eligible for Overnight Crisis Committees",
+      message:
+        "School students can only participate in UNHRC, DISEC, AIPPM, ECOSOC, and IP committees",
       path: ["committeeChoice"],
     }
   )
