@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-inria-sans);
+}
+
 @layer base {
 
     button,
