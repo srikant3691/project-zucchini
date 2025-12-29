@@ -164,8 +164,9 @@ export default function Header() {
 
       {isMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center md:hidden"
+          className="fixed inset-0 min-h-screen bg-black/95 flex flex-col items-center justify-center md:hidden"
           style={{
+            zIndex: 45,
             animation: isClosing
               ? "slideFadeOut 0.3s ease-in forwards"
               : "slideFadeIn 0.3s ease-out forwards",
