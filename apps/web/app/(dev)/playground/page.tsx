@@ -1,8 +1,9 @@
-import Hero from "@/components/hero/hero";
+import FAQ from "@/components/FAQ/page";
+
 const Playground = () => {
   return (
     <div>
-      <Hero />
+      <FAQ />
     </div>
   );
 };
