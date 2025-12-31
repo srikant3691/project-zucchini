@@ -1,6 +1,6 @@
 export const navbarImages = {
   mobileLogo:
-    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767123865/nitrutsav-2026/fd86fetpf7gqajn0pb43.svg",
+    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767166243/nitrutsav-2026/j6ft36khfnysuy0ywl7n.png",
 };
 
 export const navItems = [

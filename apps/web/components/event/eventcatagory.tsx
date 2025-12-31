@@ -23,7 +23,7 @@ export default function EventCategory({
             key={category}
             onClick={() => setActiveCategory(category)}
             className={`
-                group relative flex items-center text-xs md:text-xl uppercase tracking-wider transition-all duration-300 font-calistoga
+                group relative flex items-center text-xs md:text-xl uppercase tracking-wider transition-all duration-300 font-calistoga text-nowrap
                 ${isActive ? "scale-110" : "font-light text-white hover:text-white/80"}
             `}
           >

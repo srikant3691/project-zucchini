@@ -19,7 +19,7 @@ body {
       #9906be 74.73%,
       #fff 85.88%
     );
-   --animate-spin: spin 1s linear infinite;
+  --animate-spin: spin 1s linear infinite;
 }
 
 @theme inline {
@@ -31,6 +31,8 @@ body {
   --breakpoint-llg: 1140px;
   --breakpoint-lmd: 970px;
   --breakpoint-lsm: 470px;
+  --breakpoint-llsm: 600px;
+  --breakpoint-msm: 420px;
 }
 
 /* Hero animations */
@@ -93,109 +95,107 @@ body {
   }
 }
 
-
 .animate-fade-in {
-    animation: fade-in 1s var(--animation-delay, 0s) ease forwards;
+  animation: fade-in 1s var(--animation-delay, 0s) ease forwards;
 }
 
 .animate-fade-up {
-    animation: fade-up 1s var(--animation-delay, 0s) ease forwards;
+  animation: fade-up 1s var(--animation-delay, 0s) ease forwards;
 }
 
 .animate-marquee {
-    animation: marquee var(--duration) infinite linear;
+  animation: marquee var(--duration) infinite linear;
 }
 
 .animate-marquee-vertical {
-    animation: marquee-vertical var(--duration) linear infinite;
+  animation: marquee-vertical var(--duration) linear infinite;
 }
 
 .animate-shimmer {
-    animation: shimmer 8s infinite;
+  animation: shimmer 8s infinite;
 }
 
 .animate-spin {
-    animation: var(--animate-spin);
+  animation: var(--animate-spin);
 }
 
 @keyframes spin {
-    to {
-        transform: rotate(1turn);
-    }
+  to {
+    transform: rotate(1turn);
+  }
 }
 
 @keyframes image-glow {
-    0% {
-        opacity: 0;
-        animation-timing-function: cubic-bezier(0.74, 0.25, 0.76, 1);
-    }
+  0% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.74, 0.25, 0.76, 1);
+  }
 
-    10% {
-        opacity: 0.7;
-        animation-timing-function: cubic-bezier(0.12, 0.01, 0.08, 0.99);
-    }
+  10% {
+    opacity: 0.7;
+    animation-timing-function: cubic-bezier(0.12, 0.01, 0.08, 0.99);
+  }
 
-    to {
-        opacity: 0.4;
-    }
+  to {
+    opacity: 0.4;
+  }
 }
 
 @keyframes fade-in {
-    0% {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 
-    to {
-        opacity: 1;
-        transform: none;
-    }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes fade-up {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    to {
-        opacity: 1;
-        transform: none;
-    }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes shimmer {
+  0%,
+  90%,
+  to {
+    background-position: calc(-100% - var(--shimmer-width)) 0;
+  }
 
-    0%,
-    90%,
-    to {
-        background-position: calc(-100% - var(--shimmer-width)) 0;
-    }
-
-    30%,
-    60% {
-        background-position: calc(100% + var(--shimmer-width)) 0;
-    }
+  30%,
+  60% {
+    background-position: calc(100% + var(--shimmer-width)) 0;
+  }
 }
 
 @keyframes marquee {
-    0% {
-        transform: translate(0);
-    }
+  0% {
+    transform: translate(0);
+  }
 
-    to {
-        transform: translateX(calc(-100% - var(--gap)));
-    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
 }
 
 @keyframes marquee-vertical {
-    0% {
-        transform: translateY(0);
-    }
+  0% {
+    transform: translateY(0);
+  }
 
-    to {
-        transform: translateY(calc(-100% - var(--gap)));
-    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
 }
 
 .visualizer-bar {
@@ -579,6 +579,44 @@ body {
 }
 
 .video-card-body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius);
+  padding: var(--border-width);
+  background: linear-gradient(
+    var(--gradient-angle),
+    #fffabe 0%,
+    #e7581f 20%,
+    #8d2357 40%,
+    #055a44 60%,
+    #fb229e 80%,
+    #9906be 90%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.spons-border {
+  position: relative;
+  --border-width: 0.8px;
+  --border-radius: 0px;
+  --bg-color: rgba(217, 217, 217, 0.18);
+  --gradient-angle: 90deg;
+
+  border-radius: var(--border-radius);
+  background: var(--bg-color);
+  backdrop-filter: blur(2.576474666595459px);
+}
+
+.spons-border::before {
   content: "";
   position: absolute;
   inset: 0;

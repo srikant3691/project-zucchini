@@ -53,12 +53,12 @@ export default function Header() {
     >
       <div className="max-w-[85rem] mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <Link href="/" className="md:hidden relative w-30 h-10 z-50">
+          <Link href="/" className="md:hidden relative size-12 z-50">
             <Image
               src={navbarImages.mobileLogo}
               alt="Nitrutsav Logo"
               fill
-              className="object-contain"
+              className="object-contain items-start"
             />
           </Link>
 

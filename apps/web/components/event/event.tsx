@@ -41,7 +41,7 @@ export default function Event() {
   }, [activeIndex]);
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden bg-black pt-20">
+    <div className="relative w-full min-h-screen overflow-hidden bg-black py-20">
       {/* BACKGROUNDS */}
       <Image
         src={Images.BackgroundImg2}
