@@ -6,7 +6,36 @@
 body {
   padding: 0;
   margin: 0;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow-x: hidden;
 }
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 :root {
   --bg-image: url("https://res.cloudinary.com/drf3eatfm/image/upload/v1767005164/nitrutsav-2026/gsnj4mjupteth0nktnla.jpg");
   --rainbow-grad: background: linear-gradient(
@@ -28,11 +57,14 @@ body {
   --font-berkshire: var(--font-berkshire);
   --font-calistoga: var(--font-calistoga);
   --font-berry: var(--font-berry);
-  --breakpoint-llg: 1140px;
-  --breakpoint-lmd: 970px;
+  --breakpoint-llg: 1280px;
+  --breakpoint-lmd: 1000px;
+  --breakpoint-llmd: 800px;
+  --breakpoint-llsmd: 580px;
   --breakpoint-lsm: 470px;
   --breakpoint-llsm: 600px;
   --breakpoint-msm: 420px;
+  --breakpoint-ssm: 380px;
 }
 
 /* Hero animations */
@@ -640,4 +672,18 @@ body {
     linear-gradient(#fff 0 0);
   mask-composite: exclude;
   pointer-events: none;
+}
+
+.hero-bg {
+  background-color: #000;
+  background-image: url("/hero/bg-hero.png");
+  background-size: 102% auto;
+  background-position: center -15;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+.hero-layer-bg2 {
+  /* background-size: 100%; */
+  /* background-position: center; */
 }

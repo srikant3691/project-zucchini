@@ -1,10 +1,11 @@
-import Hero from "@/components/hero/hero";
-import About from "@/components/about/about";
+"use client";
+
+import ContactSection from "@/components/contact/contact";
+import TempHero from "@/components/temp-hero";
 const Playground = () => {
   return (
-    <div>
-      <Hero />
-      <About />
+    <div className="hero-bg">
+      <TempHero />
     </div>
   );
 };
