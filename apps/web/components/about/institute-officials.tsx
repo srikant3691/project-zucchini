@@ -16,6 +16,11 @@ const officials: Official[] = [
     email: "director@nitrkl.ac.in",
   },
   {
+    name: "Niranjan Panda",
+    title: "Dean SW",
+    email: "dean-sw@nitrkl.ac.in",
+  },
+  {
     name: "Rajeev Kumar Panda",
     title: "President SAC",
     designation: "Professor",
@@ -81,11 +86,11 @@ function InstituteInfoCard() {
   return (
     <div className="gradient-border rounded-lg p-6 sm:p-8 w-full max-w-xl">
       <div className="text-center">
-        <h2 className="text-white text-left text-white/80">Legal Name:</h2>
+        <h2 className=" text-left text-white/80">Legal Name:</h2>
         <h3 className="text-lg sm:text-xl font-semibold text-white mb-4 uppercase">
           {instituteInfo.name}
         </h3>
-        <h2 className="text-white text-left text-white/80">Legal Address:</h2>
+        <h2 className="text-left text-white/80">Legal Address:</h2>
         <p className="text-base sm:text-lg text-white font-semibold uppercase">
           {instituteInfo.location}
         </p>
@@ -95,12 +100,28 @@ function InstituteInfoCard() {
 }
 
 export default function InstituteOfficials() {
+  const director = officials[0]!;
+  const deanAndPresident = [officials[1]!, officials[2]!];
+  const vicePresidents = [officials[3]!, officials[4]!];
+
   return (
     <section className="w-full py-8 sm:py-12 lg:py-16 font-inria">
       <div className="flex flex-col items-center justify-center gap-8 sm:gap-10 lg:gap-12">
-        {/* Officials Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 w-full max-w-4xl">
-          {officials.map((official, index) => (
+        {/* Director Row */}
+        <div className="flex justify-center w-full">
+          <OfficialCard official={director} />
+        </div>
+
+        {/* Dean and President Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 w-full max-w-4xl">
+          {deanAndPresident.map((official, index) => (
+            <OfficialCard key={index} official={official} />
+          ))}
+        </div>
+
+        {/* Vice Presidents Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 w-full max-w-4xl">
+          {vicePresidents.map((official, index) => (
             <OfficialCard key={index} official={official} />
           ))}
         </div>
