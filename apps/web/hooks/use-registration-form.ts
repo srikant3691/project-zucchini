@@ -11,11 +11,12 @@ import { toast } from "sonner";
 
 interface UseRegistrationFormProps {
   user: User;
-  onComplete: (isNitrStudent: boolean) => void;
+  onComplete: (isNitrStudent: boolean, wantsAccommodation: boolean) => void;
 }
 
 export function useRegistrationForm({ user, onComplete }: UseRegistrationFormProps) {
   const [isNitrStudent, setIsNitrStudent] = useState(false);
+  const [wantsAccommodation, setWantsAccommodation] = useState(false);
 
   const { formData, errors, handleInputChange, validateForm, setFormData, setErrors } =
     useFormState<Registration>(
@@ -67,7 +68,7 @@ export function useRegistrationForm({ user, onComplete }: UseRegistrationFormPro
           ? "Your registration is complete. No payment required for NIT Rourkela students."
           : "Please proceed to payment to complete your registration.",
       });
-      onComplete(isNitrStudent);
+      onComplete(isNitrStudent, wantsAccommodation);
     },
     onError: (error) => {
       toast.error("Registration failed", {
@@ -136,6 +137,7 @@ export function useRegistrationForm({ user, onComplete }: UseRegistrationFormPro
       body: JSON.stringify({
         ...formData,
         isNitrStudent,
+        wantsAccommodation: isNitrStudent ? false : wantsAccommodation,
       }),
     });
   };
@@ -144,9 +146,11 @@ export function useRegistrationForm({ user, onComplete }: UseRegistrationFormPro
     formData,
     errors,
     isNitrStudent,
+    wantsAccommodation,
     isSubmitting,
     submitError,
     setIsNitrStudent,
+    setWantsAccommodation,
     handleInputChange,
     handleInstituteChange,
     handleSubmit,

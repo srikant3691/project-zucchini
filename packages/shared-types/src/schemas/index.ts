@@ -137,6 +137,8 @@ export const RegistrationSchema = z.object({
 
   undertaking: z.string().url(MESSAGES.REQUIRED("Undertaking document")),
 
+  wantsAccommodation: z.boolean().optional().default(false),
+
   // transactionID: z.string().min(1, MESSAGES.REQUIRED("Transaction ID")),
 
   registeredAt: z

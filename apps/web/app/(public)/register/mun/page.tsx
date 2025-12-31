@@ -2,14 +2,19 @@
 
 import { signInWithGoogle } from "@repo/firebase-config";
 import { useMunRegistration } from "@/hooks/use-mun-registration";
-import { LoadingState, ProgressBar, AuthStep, CompleteStep } from "@/components/registration";
+import { LoadingState, AuthStep } from "@/components/registration";
 import {
   LeaderFormStep,
   Teammate1FormStep,
   Teammate2FormStep,
   MunPaymentStep,
+  MunInfoStep,
+  MunCompleteStep,
 } from "@/components/registration/mun";
-import { PORTFOLIO_MATRIX_URL } from "@/config/register/mun";
+
+import SectionHeading from "@/components/ui/section-heading";
+import { ArrowLeft } from "lucide-react";
+import { MunProgressBar } from "@/components/registration/mun-progress-bar";
 
 export default function MunRegisterPage() {
   const {
@@ -25,6 +30,7 @@ export default function MunRegisterPage() {
     handleRegistrationComplete,
     handlePaymentFailure,
     handleBackStep,
+    handleProceedToRegister,
     setError,
     handleNitrStatusChange,
   } = useMunRegistration();
@@ -43,31 +49,28 @@ export default function MunRegisterPage() {
   }
 
   const isTeamRegistration = currentStep === "form-leader";
+  const showBackButton =
+    currentStep === "auth" || currentStep === "form" || currentStep === "form-leader";
 
   return (
-    <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-1">
-            Register for MUN - NITRUTSAV 2026
-          </h1>
-          <p className="text-gray-600">Model United Nations Registration</p>
-        </div>
+    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden reg-bg-image">
+      <div className="max-w-full mx-auto relative z-10 mt-24">
+        <SectionHeading title="MUN Registration" containerClassName="mb-20" />
 
-        {/* Portfolio Matrix */}
-        <p className="text-center mb-6">
-          <a
-            href={PORTFOLIO_MATRIX_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-800 underline"
-          >
-            View Portfolio Matrix
-          </a>
-        </p>
+        {currentStep !== "info" && <MunProgressBar currentStep={currentStep} />}
+        <div className="max-w-5xl mx-auto p-6 font-inria form-container gradient-border">
+          {showBackButton && (
+            <button
+              onClick={handleBackStep}
+              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors mb-4 font-inria"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>About MUN</span>
+            </button>
+          )}
 
-        <ProgressBar currentStep={currentStep} />
-        <div className="bg-white border border-gray-200 rounded-lg p-8">
+          {currentStep === "info" && <MunInfoStep onProceedToRegister={handleProceedToRegister} />}
+
           {currentStep === "auth" && (
             <AuthStep onGoogleSignIn={handleGoogleSignIn} isLoading={isLoading} error={error} />
           )}
@@ -112,7 +115,13 @@ export default function MunRegisterPage() {
             />
           )}
 
-          {currentStep === "complete" && <CompleteStep />}
+          {currentStep === "complete" && (
+            <MunCompleteStep
+              registrationId={teamId}
+              userEmail={userData?.email}
+              userName={userData?.name}
+            />
+          )}
         </div>
       </div>
     </div>

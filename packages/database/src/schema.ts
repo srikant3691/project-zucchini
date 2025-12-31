@@ -40,6 +40,7 @@ export const usersTable = pgTable("users", {
   referralCode: varchar({ length: 50 }),
   permission: text().notNull(),
   undertaking: text().notNull(),
+  wantsAccommodation: boolean().notNull().default(true),
   isNitrStudent: boolean().notNull().default(false),
   isVerified: boolean().notNull().default(false),
   registeredAt: timestamp().notNull().defaultNow(),
@@ -49,7 +50,7 @@ export const usersTable = pgTable("users", {
 export const transactionsTable = pgTable("transactions", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   userId: integer().references(() => usersTable.id, { onDelete: "cascade" }),
-  teamId: varchar({ length: 36 }),
+  teamId: varchar({ length: 10 }),
   txnId: varchar({ length: 50 }).notNull().unique(),
   type: transactionTypeEnum().notNull(),
   amount: integer().notNull(),
@@ -81,7 +82,7 @@ export const munRegistrationsTable = pgTable("mun_registrations", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   firebaseUid: varchar({ length: 128 }).unique(),
 
-  teamId: varchar({ length: 36 }),
+  teamId: varchar({ length: 10 }),
   isTeamLeader: boolean().default(false),
 
   name: varchar({ length: 255 }).notNull(),

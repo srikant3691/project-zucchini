@@ -24,15 +24,15 @@ export default function InstituteField({
     <>
       {/* Institute Name - Searchable Dropdown */}
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
-          Institute Name <span className="text-red-500">*</span>
+        <label className="block text-sm font-medium font-inria text-white mb-0.5">
+          Institute Name <span className="asterisk-icon">*</span>
         </label>
         {isNitrStudent ? (
           <input
             type="text"
             value={value || ""}
             disabled
-            className="w-full px-4 py-3 border border-gray-200 bg-gray-50 rounded-xl opacity-50 cursor-not-allowed"
+            className="w-full px-3 py-2 text-sm font-semibold input-field opacity-50 cursor-not-allowed"
           />
         ) : (
           <SearchableSelect
@@ -52,8 +52,8 @@ export default function InstituteField({
 
       {/* University Name - Auto-filled or manual */}
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
-          University Name <span className="text-red-500">*</span>
+        <label className="block text-sm font-medium font-inria text-white mb-0.5">
+          University Name <span className="asterisk-icon">*</span>
         </label>
         <input
           type="text"
@@ -61,11 +61,11 @@ export default function InstituteField({
           onChange={(e) => onUniversityChange(e.target.value)}
           placeholder="Enter your university name"
           disabled={isNitrStudent}
-          className={`w-full px-4 py-3 border rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-            universityError ? "border-red-300 bg-red-50" : "border-gray-200 bg-gray-50"
+          className={`w-full px-3 py-2 text-sm font-semibold input-field focus:outline-none transition-all ${
+            universityError ? "border-red-500" : ""
           } ${isNitrStudent ? "opacity-50 cursor-not-allowed" : ""}`}
         />
-        {universityError && <p className="mt-1 text-sm text-red-600">{universityError}</p>}
+        {universityError && <p className="mt-0.5 text-xs text-red-400">{universityError}</p>}
       </div>
     </>
   );

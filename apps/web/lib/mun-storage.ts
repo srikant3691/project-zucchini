@@ -1,6 +1,7 @@
 import type { MunRegistration } from "@repo/shared-types";
 
 export type RegistrationStep =
+  | "info"
   | "auth"
   | "form"
   | "form-leader"

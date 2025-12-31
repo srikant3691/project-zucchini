@@ -12,6 +12,7 @@ interface RegistrationPaymentButtonProps {
   committeeChoice?: string;
   type?: string;
   teamId?: string;
+  wantsAccommodation?: boolean;
 }
 
 export default function RegistrationPaymentButton({
@@ -22,6 +23,7 @@ export default function RegistrationPaymentButton({
   committeeChoice,
   type,
   teamId,
+  wantsAccommodation,
 }: RegistrationPaymentButtonProps) {
   const { execute, loading: isLoading } = useApi({
     onError(error) {
@@ -44,6 +46,7 @@ export default function RegistrationPaymentButton({
         isCollegeStudent,
         committeeChoice,
         teamId,
+        wantsAccommodation,
       }),
     });
 
@@ -71,21 +74,19 @@ export default function RegistrationPaymentButton({
   };
 
   return (
-    <>
-      <button
-        onClick={handleSubmit}
-        disabled={isLoading}
-        className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-      >
-        {isLoading ? (
-          <>
-            <Loader2 className="w-5 h-5 animate-spin" />
-            Processing...
-          </>
-        ) : (
-          "Proceed to Payment"
-        )}
-      </button>
-    </>
+    <button
+      onClick={handleSubmit}
+      disabled={isLoading}
+      className="gradient-border-btn px-6 py-2.5 text-white text-base font-semibold hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+    >
+      {isLoading ? (
+        <>
+          <Loader2 className="w-5 h-5 animate-spin" />
+          Processing...
+        </>
+      ) : (
+        "Proceed to Payment"
+      )}
+    </button>
   );
 }

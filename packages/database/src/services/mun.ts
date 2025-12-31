@@ -5,7 +5,11 @@ import { munRegistrationsTable, transactionsTable, usersTable } from "../schema"
 import { eq, desc, and } from "drizzle-orm";
 import { MunRegistrationSchema, validateAndThrow, type MunRegistration } from "@repo/shared-types";
 import { getUserByFirebaseUid } from "./user";
-import { munAmount } from "../../../../apps/web/config";
+import { MUN_FEE } from "../../../../apps/web/config";
+
+const generateTeamIdFromRowId = (rowId: number): string => {
+  return `MUN-${rowId.toString().padStart(5, "0")}`;
+};
 
 export const getMunUserByFirebaseUid = async (firebaseUid: string) => {
   const [result] = await db
@@ -54,23 +58,28 @@ export const registerMunUser = async (
     throw new Error(`${userData.email} is already registered`);
   }
 
-  const teamId = crypto.randomUUID();
-
+  // First insert without teamId to get the row ID
   const [newRegistration] = await db
     .insert(munRegistrationsTable)
     .values({
       firebaseUid,
-      teamId,
       isTeamLeader: false,
       ...userData,
       isNitrStudent,
-      isVerified: isNitrStudent, // Auto-verify NITR students
+      isVerified: isNitrStudent,
     })
     .returning();
 
   if (!newRegistration) {
     throw new Error("Failed to create MUN registration");
   }
+
+  // Generate teamId from row ID and update
+  const teamId = generateTeamIdFromRowId(newRegistration.id);
+  await db
+    .update(munRegistrationsTable)
+    .set({ teamId })
+    .where(eq(munRegistrationsTable.id, newRegistration.id));
 
   return { userId: newRegistration.id, teamId };
 };
@@ -93,22 +102,19 @@ export const registerMunTeam = async (
     }
   }
 
-  const teamId = crypto.randomUUID();
-
+  // First insert all team members without teamId
   const registrations = await db
     .insert(munRegistrationsTable)
     .values([
       {
         firebaseUid: leaderFirebaseUid,
-        teamId,
         isTeamLeader: true,
         ...teamLeader,
         isNitrStudent: leaderIsNitrStudent,
-        isVerified: leaderIsNitrStudent, // Auto-verify NITR students
+        isVerified: leaderIsNitrStudent,
       },
       {
         firebaseUid: teammate1FirebaseUid,
-        teamId,
         isTeamLeader: false,
         ...teammate1,
         isNitrStudent: teammate1IsNitrStudent,
@@ -116,7 +122,6 @@ export const registerMunTeam = async (
       },
       {
         firebaseUid: teammate2FirebaseUid,
-        teamId,
         isTeamLeader: false,
         ...teammate2,
         isNitrStudent: teammate2IsNitrStudent,
@@ -128,6 +133,21 @@ export const registerMunTeam = async (
   if (registrations.length !== 3) {
     throw new Error("Failed to create team registrations");
   }
+
+  // Generate teamId from leader's row ID and update all team members
+  const teamId = generateTeamIdFromRowId(registrations[0]!.id);
+  await db
+    .update(munRegistrationsTable)
+    .set({ teamId })
+    .where(eq(munRegistrationsTable.id, registrations[0]!.id));
+  await db
+    .update(munRegistrationsTable)
+    .set({ teamId })
+    .where(eq(munRegistrationsTable.id, registrations[1]!.id));
+  await db
+    .update(munRegistrationsTable)
+    .set({ teamId })
+    .where(eq(munRegistrationsTable.id, registrations[2]!.id));
 
   return {
     teamId,
@@ -160,7 +180,7 @@ export const getMunRegistrationFee = (
   studentType: "SCHOOL" | "COLLEGE",
   committeeChoice: string
 ): number => {
-  const baseFee = studentType === "COLLEGE" ? munAmount.college : munAmount.school;
+  const baseFee = studentType === "COLLEGE" ? MUN_FEE.college : MUN_FEE.school;
   return committeeChoice === "MOOT_COURT" ? baseFee * 3 : baseFee;
 };
 

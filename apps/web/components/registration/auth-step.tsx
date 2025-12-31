@@ -1,5 +1,5 @@
 import GoogleIcon from "@repo/ui/google-icon";
-import { Loader2 } from "lucide-react";
+import { MoveRight } from "lucide-react";
 
 interface AuthStepProps {
   onGoogleSignIn: () => Promise<void>;
@@ -9,9 +9,9 @@ interface AuthStepProps {
 
 export function AuthStep({ onGoogleSignIn, isLoading, error }: AuthStepProps) {
   return (
-    <div className="text-center py-8">
-      <h2 className="text-xl font-semibold text-gray-900 mb-2">Welcome</h2>
-      <p className="text-gray-600 mb-8">Sign in with your Google account to begin registration</p>
+    <div className="text-center min-h-60 flex flex-col justify-center items-center text-white">
+      <h2 className="text-xl font-semibold mb-2 font-berry">Welcome</h2>
+      <p className="mb-8 font-inria">Sign in with your Google account to begin registration</p>
 
       {error && (
         <div className="mb-6 p-3 bg-red-50 border border-red-200 rounded text-red-700 text-sm">
@@ -22,10 +22,20 @@ export function AuthStep({ onGoogleSignIn, isLoading, error }: AuthStepProps) {
       <button
         onClick={onGoogleSignIn}
         disabled={isLoading}
-        className="inline-flex items-center gap-3 px-6 py-3 bg-white border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 hover:border-gray-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="group relative inline-flex items-center gap-4 px-8 py-4 bg-white rounded-xl text-gray-800 font-medium hover:bg-white/95 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-inria shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] animate-[slideFadeIn_0.8s_ease-out]"
       >
-        <GoogleIcon />
-        Sign in with Google
+        {isLoading ? (
+          <>
+            <div className="w-6 h-6 border-3 border-gray-300 border-t-gray-700 rounded-full animate-spin" />
+            <span className="text-base">Signing in...</span>
+          </>
+        ) : (
+          <>
+            <GoogleIcon />
+            <span className="text-base">Continue with Google</span>
+            <MoveRight className="size-4" />
+          </>
+        )}
       </button>
     </div>
   );

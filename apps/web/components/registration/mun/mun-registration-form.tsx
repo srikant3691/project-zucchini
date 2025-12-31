@@ -3,7 +3,6 @@
 import { type User } from "@repo/firebase-config";
 import { MunRegistrationSchema, type MunRegistration } from "@repo/shared-types";
 import { useApi } from "@repo/shared-utils";
-import { FormSection } from "../../ui";
 import { basicInfoFields, emergencyFields } from "../../../config/register/mun";
 import { useFormState, renderFormFields, ErrorDisplay } from "../../../utils/form";
 import { useEffect } from "react";
@@ -11,6 +10,7 @@ import { useMunFormValidation } from "@/hooks/use-mun-form-validation";
 import { NitrCheckbox } from "./nitr-checkbox";
 import { CollegeInfoSection } from "./college-info-section";
 import { MunDetailsSection } from "./mun-details-section";
+import { MUN_FEE } from "@/config";
 
 interface MunRegistrationFormProps {
   user: User;
@@ -31,6 +31,7 @@ interface MunRegistrationFormProps {
   /** If true, the NITR student checkbox is locked and cannot be changed (for Moot Court teammates) */
   lockNitrStatus?: boolean;
   hideStudentType?: boolean;
+  portfolioMatrixUrl?: string;
 }
 
 export default function MunRegistrationForm({
@@ -46,6 +47,7 @@ export default function MunRegistrationForm({
   onBack,
   lockNitrStatus = false,
   hideStudentType = false,
+  portfolioMatrixUrl,
 }: MunRegistrationFormProps) {
   const processedInitialData: Partial<MunRegistration> = initialData
     ? {
@@ -133,28 +135,27 @@ export default function MunRegistrationForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <NitrCheckbox
         isNitrStudent={isNitrStudent}
         setIsNitrStudent={setIsNitrStudent}
         lockNitrStatus={lockNitrStatus}
         stepTitle={stepTitle}
         hideCommitteeChoice={hideCommitteeChoice}
+        portfolioMatrixUrl={portfolioMatrixUrl}
       />
 
-      <FormSection title="Basic Information">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {renderFormFields(
-            basicInfoFields.map((field) => ({
-              ...field,
-              readonly: field.name === "email" ? !clearUserDetails : field.readonly,
-            })),
-            formData,
-            errors,
-            handleFieldChange
-          )}
-        </div>
-      </FormSection>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {renderFormFields(
+          basicInfoFields.map((field) => ({
+            ...field,
+            readonly: field.name === "email" ? !clearUserDetails : field.readonly,
+          })),
+          formData,
+          errors,
+          handleFieldChange
+        )}
+      </div>
 
       <CollegeInfoSection
         formData={formData}
@@ -176,40 +177,56 @@ export default function MunRegistrationForm({
         />
       )}
 
-      <FormSection title="Emergency & Safety Details">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {renderFormFields(emergencyFields, formData, errors, handleFieldChange)}
-        </div>
-      </FormSection>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {renderFormFields(emergencyFields, formData, errors, handleFieldChange)}
+      </div>
 
-      <FormSection title="Declaration & Consent">
-        <div className="space-y-3">
-          <label className="flex items-start cursor-pointer">
-            <input
-              type="checkbox"
-              checked={formData.agreedToTerms === true}
-              onChange={(e) => handleFieldChange("agreedToTerms", e.target.checked)}
-              className="w-4 h-4 text-blue-600 focus:ring-blue-500 rounded mt-1"
-            />
-            <span className="ml-2 text-sm text-gray-700">
-              I confirm that the information provided is correct and I agree to follow NITRUTSAV
-              rules & code of conduct <span className="text-red-500">*</span>
-            </span>
-          </label>
-          {errors.agreedToTerms && (
-            <p className="mt-1 text-sm text-red-600">{errors.agreedToTerms}</p>
-          )}
-        </div>
-      </FormSection>
+      <div className="space-y-3">
+        <label className="flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            checked={formData.agreedToTerms === true}
+            onChange={(e) => handleFieldChange("agreedToTerms", e.target.checked)}
+            className="w-4 h-4 text-blue-600 focus:ring-blue-500 rounded mt-1"
+          />
+          <span className="ml-2 text-sm text-white">
+            I confirm that the information provided is correct and I agree to follow NITRUTSAV rules
+            & code of conduct <span className="asterisk-icon">*</span>
+          </span>
+        </label>
+        {errors.agreedToTerms && (
+          <p className="mt-1 text-sm text-red-600">{errors.agreedToTerms}</p>
+        )}
+      </div>
 
       <ErrorDisplay error={submitError} />
+
+      {formData.studentType && !isNitrStudent && (
+        <div className="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10">
+          <div className="flex items-center justify-between text-white font-inria">
+            <span>
+              Registration Fee
+              {formData.committeeChoice === "MOOT_COURT" && (
+                <span className="text-white/70 text-sm ml-1">(× 3 team members)</span>
+              )}
+            </span>
+            <span className="text-lg font-semibold">
+              ₹
+              {(
+                (formData.studentType === "COLLEGE" ? MUN_FEE.college : MUN_FEE.school) *
+                (formData.committeeChoice === "MOOT_COURT" ? 3 : 1)
+              ).toLocaleString("en-IN")}
+            </span>
+          </div>
+        </div>
+      )}
 
       <div className="flex justify-between items-center pt-4">
         {onBack && (
           <button
             type="button"
             onClick={onBack}
-            className="px-6 py-3 bg-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-300 transition-all duration-200 shadow-md hover:shadow-lg"
+            className="gradient-border-btn px-6 py-2.5 text-white text-base font-semibold hover:shadow-xl transition-all duration-200"
           >
             ← Back
           </button>
@@ -219,7 +236,7 @@ export default function MunRegistrationForm({
           <button
             type="submit"
             disabled={false}
-            className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+            className="gradient-border-btn px-6 py-2.5 text-white text-base font-semibold hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
           >
             {getButtonText(formData.committeeChoice, hideCommitteeChoice, buttonText)}
           </button>

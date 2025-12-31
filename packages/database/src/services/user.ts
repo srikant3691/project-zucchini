@@ -29,7 +29,8 @@ export const getUserByFirebaseUid = async (firebaseUid: string) => {
 export const registerUser = async (
   userData: Registration,
   firebaseUid: string,
-  isNitrStudent: boolean = false
+  isNitrStudent: boolean = false,
+  wantsAccommodation: boolean = true
 ) => {
   validateAndThrow(RegistrationSchema, userData, "User registration");
 
@@ -48,6 +49,7 @@ export const registerUser = async (
       referralCode: userData.referralCode || null,
       permission: userData.permission,
       undertaking: userData.undertaking,
+      wantsAccommodation,
       isNitrStudent,
       isVerified: isNitrStudent, // Auto-verify NITR students
     })

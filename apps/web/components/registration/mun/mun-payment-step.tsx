@@ -1,4 +1,5 @@
 import RegistrationPaymentButton from "../registration-payment-button";
+import { MUN_FEE } from "@/config";
 
 interface UserData {
   name: string;
@@ -20,42 +21,40 @@ export function MunPaymentStep({
   onPaymentFailure,
   teamId,
 }: MunPaymentStepProps) {
+  const isCollegeStudent = userData.studentType === "COLLEGE";
+  const isMootCourt = userData.committeeChoice === "MOOT_COURT";
+  const basePrice = isCollegeStudent ? MUN_FEE.college : MUN_FEE.school;
+  const price = isMootCourt ? basePrice * 3 : basePrice;
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 flex items-center justify-center flex-col">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Payment</h2>
-        <p className="text-gray-600">Complete your MUN registration payment</p>
+        <h2 className="text-2xl font-bold text-white mb-2 text-center">Payment</h2>
+        <p className="text-white/80">Complete your MUN registration payment</p>
+      </div>
+
+      {/* Price Display */}
+      <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/10">
+        <div className="flex items-center gap-3 text-white font-inria">
+          <span>
+            Registration Fee
+            {isMootCourt && <span className="text-white/70 text-sm ml-1">(× 3 team members)</span>}
+          </span>
+          <span className="text-xl font-semibold">₹{price.toLocaleString("en-IN")}</span>
+        </div>
       </div>
 
       {paymentError && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+        <div className="p-3 bg-red-500/20 border-2 border-red-400 rounded-[13px] text-red-200 text-sm backdrop-blur-[9.25px]">
           {paymentError}
         </div>
       )}
-
-      {/* <MunPaymentButton
-        userName={userData.name}
-        userEmail={userData.email}
-        studentType={userData.studentType || "COLLEGE"}
-        committeeChoice={userData.committeeChoice || "UNHRC"}
-        onPaymentSuccess={onPaymentSuccess}
-        onPaymentFailure={onPaymentFailure}
-        nonNitrCount={
-          userData.committeeChoice === "MOOT_COURT"
-            ? teamNitrStatus.leader
-              ? 0 // All NITR team - no payment needed
-              : 3 // All non-NITR team - 3 members pay
-            : teamNitrStatus.leader
-              ? 0
-              : 1
-        }
-      /> */}
 
       <RegistrationPaymentButton
         userName={userData.name}
         userEmail={userData.email}
         onPaymentFailure={onPaymentFailure}
-        isCollegeStudent={userData.studentType === "COLLEGE"}
+        isCollegeStudent={isCollegeStudent}
         committeeChoice={userData.committeeChoice}
         type="MUN"
         teamId={teamId || ""}

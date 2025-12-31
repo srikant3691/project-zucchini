@@ -42,7 +42,7 @@ interface CheckMunRegistrationResponse {
 
 export function useMunRegistration() {
   const { user, isLoading: authLoading } = useAuth();
-  const [currentStep, setCurrentStep] = useState<RegistrationStep>("auth");
+  const [currentStep, setCurrentStep] = useState<RegistrationStep>("info");
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -87,7 +87,10 @@ export function useMunRegistration() {
   useEffect(() => {
     const checkRegistrationStatus = async () => {
       if (!user) {
-        setCurrentStep("auth");
+        // Keep on info step if user hasn't clicked register yet
+        if (currentStep !== "auth") {
+          setCurrentStep("info");
+        }
         setIsLoading(false);
         return;
       }
@@ -288,6 +291,21 @@ export function useMunRegistration() {
     } else if (currentStep === "form-teammate1") {
       setCurrentStep("form-leader");
       saveMunStep("form-leader");
+    } else if (currentStep === "form" || currentStep === "form-leader") {
+      // Go back to info step from form
+      setCurrentStep("info");
+    } else if (currentStep === "auth") {
+      // Go back to info step from auth
+      setCurrentStep("info");
+    }
+  };
+
+  const handleProceedToRegister = () => {
+    // Move from info step to auth step
+    if (user) {
+      setCurrentStep("form");
+    } else {
+      setCurrentStep("auth");
     }
   };
 
@@ -313,6 +331,7 @@ export function useMunRegistration() {
     handlePaymentSuccess,
     handlePaymentFailure,
     handleBackStep,
+    handleProceedToRegister,
     handleNitrStatusChange,
     setError,
   };

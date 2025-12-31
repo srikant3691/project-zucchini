@@ -6,6 +6,7 @@ interface DocumentUploadProps {
   value: string | undefined;
   error?: string;
   onUploadComplete: (url: string) => void;
+  compact?: boolean;
 }
 
 export default function DocumentUpload({
@@ -14,15 +15,25 @@ export default function DocumentUpload({
   value,
   error,
   onUploadComplete,
+  compact = false,
 }: DocumentUploadProps) {
   return (
     <div>
-      <label className="block text-sm font-semibold text-gray-700 mb-2">
-        {label} <span className="text-red-500">*</span>
+      <label
+        className={`block font-medium font-inria text-white mb-1 ${compact ? "text-sm" : "text-base"}`}
+      >
+        {label} <span className="asterisk-icon">*</span>
       </label>
-      {description && <p className="text-xs text-gray-500 mb-2">{description}</p>}
-      <CloudinaryUploader maxFiles={1} value={value} onUploadComplete={onUploadComplete} />
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+      {description && (
+        <p className={`text-white/80 mb-1 ${compact ? "text-xs" : "text-sm"}`}>{description}</p>
+      )}
+      <CloudinaryUploader
+        maxFiles={1}
+        value={value}
+        onUploadComplete={onUploadComplete}
+        compact={compact}
+      />
+      {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
     </div>
   );
 }

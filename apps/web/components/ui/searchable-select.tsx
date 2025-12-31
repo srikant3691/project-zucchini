@@ -91,7 +91,7 @@ export default function SearchableSelect({
 
   if (isCustomMode && allowCustom) {
     return (
-      <div className="space-y-2">
+      <div className="space-y-1">
         <div className="flex gap-2">
           <input
             ref={inputRef}
@@ -104,19 +104,19 @@ export default function SearchableSelect({
             onBlur={handleCustomSubmit}
             placeholder={customPlaceholder}
             disabled={disabled}
-            className={`flex-1 w-full px-4 py-3 border rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-              error ? "border-red-300 bg-red-50" : "border-gray-200 bg-gray-50"
+            className={`flex-1 w-full px-3 py-2 text-sm font-semibold input-field focus:outline-none transition-all ${
+              error ? "border-red-500" : ""
             } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
           />
           <button
             type="button"
             onClick={handleBackToSelect}
-            className="px-3 py-2 text-sm text-gray-600 hover:text-gray-800 border border-gray-200 rounded-xl hover:bg-gray-100 transition-colors"
+            className="px-2 py-1 text-xs text-white font-semibold bg-white/20 border-2 border-white/40 rounded-[13px] hover:bg-white/30 backdrop-blur-[9.25px] transition-colors"
           >
             ← Back
           </button>
         </div>
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <p className="text-xs text-red-400">{error}</p>}
       </div>
     );
   }
@@ -125,17 +125,17 @@ export default function SearchableSelect({
     <div ref={containerRef} className="relative">
       <div
         onClick={() => !disabled && setIsOpen(!isOpen)}
-        className={`w-full px-4 py-3 border rounded-xl transition-all duration-200 cursor-pointer flex items-center justify-between ${
-          error ? "border-red-300 bg-red-50" : "border-gray-200 bg-gray-50"
-        } ${disabled ? "opacity-50 cursor-not-allowed" : "hover:border-gray-300"} ${
-          isOpen ? "ring-2 ring-blue-500 border-transparent" : ""
+        className={`w-full px-3 py-2 text-sm font-semibold input-field transition-all duration-200 cursor-pointer flex items-center justify-between ${
+          error ? "border-red-500" : ""
+        } ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${
+          isOpen ? "ring-2 ring-white/50" : ""
         }`}
       >
-        <span className={selectedOption ? "text-gray-900" : "text-gray-400"}>
+        <span className={selectedOption ? "text-white" : "text-white/60"}>
           {selectedOption?.label || placeholder}
         </span>
         <svg
-          className={`w-5 h-5 text-gray-400 transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`w-4 h-4 text-white/60 transition-transform ${isOpen ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -145,42 +145,42 @@ export default function SearchableSelect({
       </div>
 
       {isOpen && (
-        <div className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-xl shadow-lg max-h-64 overflow-hidden">
-          <div className="p-2 border-b border-gray-100">
+        <div className="absolute z-50 w-full mt-1 bg-white/95 border-2 border-white/40 rounded-[13px] backdrop-blur-[9.25px] shadow-lg max-h-56 overflow-hidden">
+          <div className="p-1.5 border-b border-gray-300">
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Type to search..."
-              className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-2 py-1.5 text-xs bg-white/50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder:text-gray-600"
               autoFocus
             />
           </div>
-          <div className="overflow-y-auto max-h-48">
+          <div className="overflow-y-auto max-h-40">
             {filteredOptions.length > 0 ? (
               filteredOptions.map((option) => (
                 <div
                   key={option.value}
                   onClick={() => !option.disabled && handleSelect(option.value)}
-                  className={`px-4 py-2 transition-colors ${
+                  className={`px-3 py-1.5 text-sm transition-colors ${
                     option.disabled
-                      ? "text-gray-400 cursor-not-allowed bg-gray-50"
+                      ? "text-gray-400 cursor-not-allowed bg-gray-100/50"
                       : option.value === value
-                        ? "bg-blue-50 text-blue-700 cursor-pointer"
-                        : "hover:bg-gray-50 text-gray-700 cursor-pointer"
-                  } ${option.value === "others" ? "border-t border-gray-100 font-medium text-blue-600" : ""}`}
+                        ? "bg-blue-500/30 text-gray-900 cursor-pointer font-semibold"
+                        : "hover:bg-white/50 text-gray-800 cursor-pointer"
+                  } ${option.value === "others" ? "border-t border-gray-300 font-medium text-blue-600" : ""}`}
                 >
                   {option.label}
                   {option.disabled && <span className="ml-2 text-xs">(Not available)</span>}
                 </div>
               ))
             ) : (
-              <div className="px-4 py-3 text-gray-500 text-center">No matches found</div>
+              <div className="px-3 py-2 text-xs text-gray-600 text-center">No matches found</div>
             )}
             {allowCustom && !filteredOptions.find((o) => o.value === "others") && (
               <div
                 onClick={() => handleSelect("others")}
-                className="px-4 py-2 cursor-pointer border-t border-gray-100 font-medium text-blue-600 hover:bg-gray-50"
+                className="px-3 py-1.5 text-sm cursor-pointer border-t border-gray-300 font-medium text-blue-600 hover:bg-white/50"
               >
                 + Enter custom college name
               </div>
@@ -188,7 +188,7 @@ export default function SearchableSelect({
           </div>
         </div>
       )}
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-0.5 text-xs text-red-400">{error}</p>}
     </div>
   );
 }
