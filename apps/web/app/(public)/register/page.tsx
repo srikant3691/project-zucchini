@@ -28,6 +28,7 @@ interface CheckRegistrationResponse {
   userId: number | null;
   name: string | null;
   email: string | null;
+  referralCode: string | null;
   isPaymentVerified: boolean;
   isNitrStudent: boolean;
   isVerified: boolean;
@@ -38,6 +39,7 @@ export default function RegisterPage() {
   const [currentStep, setCurrentStep] = useState<RegistrationStep>("auth");
   const [userData, setUserData] = useState<UserData | null>(null);
   const [userId, setUserId] = useState<number | null>(null);
+  const [referralCode, setReferralCode] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [paymentError, setPaymentError] = useState<string | null>(null);
@@ -63,6 +65,10 @@ export default function RegisterPage() {
             email: result.data.email!,
           });
           setUserId(result.data.userId);
+
+          if (result.data.referralCode) {
+            setReferralCode(result.data.referralCode);
+          }
 
           if (
             result.data.isPaymentVerified ||
@@ -104,13 +110,18 @@ export default function RegisterPage() {
 
   const handleRegistrationComplete = (
     isNitrStudent: boolean = false,
-    wantsAccommodation: boolean = false
+    wantsAccommodation: boolean = false,
+    generatedReferralCode?: string
   ) => {
     setUserData({
       name: user?.displayName || "",
       email: user?.email || "",
       wantsAccommodation,
     });
+
+    if (generatedReferralCode) {
+      setReferralCode(generatedReferralCode);
+    }
 
     if (isNitrStudent) {
       setCurrentStep("complete");
@@ -128,7 +139,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden reg-bg-image">
+    <div className="min-h-screen pt-20 pb-40 px-4 sm:px-6 lg:px-8 relative overflow-hidden reg-bg-image">
       <div className="max-w-full mx-auto relative z-10 mt-24">
         <SectionHeading title="Registrations" />
         <ProgressBar currentStep={currentStep} />
@@ -149,7 +160,9 @@ export default function RegisterPage() {
             />
           )}
 
-          {currentStep === "complete" && <CompleteStep userId={userId} />}
+          {currentStep === "complete" && (
+            <CompleteStep userId={userId} referralCode={referralCode} />
+          )}
         </div>
       </div>
     </div>

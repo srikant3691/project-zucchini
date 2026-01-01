@@ -30,7 +30,7 @@ export function NitrCheckbox({
         </div>
       )}
 
-      <div className="border-2 border-white/40 rounded-[13px] p-3 bg-white/25 backdrop-blur-[9.25px]">
+      <div className="border-2 border-white/40 rounded-[13px] p-3  backdrop-blur-[10px]">
         <label
           className={`flex items-center ${lockNitrStatus ? "cursor-not-allowed" : "cursor-pointer"}`}
         >

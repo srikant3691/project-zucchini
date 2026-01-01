@@ -5,3 +5,5 @@ export { default as FormSection } from "./form-section";
 export { default as SectionHeading } from "./section-heading";
 export { default as Lines } from "./lines";
 export { WhatsAppIcon } from "./icons";
+export { default as MainButton } from "./main-button";
+export type { MainButtonVariant } from "./main-button";

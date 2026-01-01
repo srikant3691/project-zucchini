@@ -1,9 +1,10 @@
-import FAQ from "@/components/FAQ/page";
+"use client";
 
+import Hero from "@/components/hero";
 const Playground = () => {
   return (
-    <div>
-      <FAQ />
+    <div className="hero-bg">
+      <Hero />
     </div>
   );
 };

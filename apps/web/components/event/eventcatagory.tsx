@@ -15,7 +15,7 @@ export default function EventCategory({
   setActiveCategory,
 }: EventCategoryProps) {
   return (
-    <div className="flex flex-col items-end justify-start gap-3 pt-2 pr-4">
+    <div className="md:flex flex-col items-end justify-start gap-3 pt-2 pr-4  hidden">
       {categories.map((category) => {
         const isActive = activeCategory === category;
         return (
@@ -31,7 +31,7 @@ export default function EventCategory({
             <span
               className={
                 isActive
-                  ? "bg-clip-text text-transparent bg-gradient-to-l from-[#EA0B0F] via-[#F3BC16] to-[#FF0092]"
+                  ? "bg-clip-text text-transparent bg-gradient-to-l from-[#EA0B0F] via-[#F3BC16] to-[#FF0092] text-nowrap"
                   : ""
               }
             >

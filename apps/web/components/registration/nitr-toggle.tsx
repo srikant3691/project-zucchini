@@ -5,7 +5,7 @@ interface NitrToggleProps {
 
 export default function NitrToggle({ isNitrStudent, onToggle }: NitrToggleProps) {
   return (
-    <div className="border-2 border-white/40 rounded-[13px] p-3 bg-white/25 backdrop-blur-[9.25px]">
+    <div className="border-2 border-white/40 rounded-[13px] p-3  backdrop-blur-[10px]">
       <label className="flex items-center cursor-pointer">
         <input
           type="checkbox"

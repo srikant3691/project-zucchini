@@ -1,7 +1,6 @@
 import { Baloo_2, Inria_Sans, Berkshire_Swash, Calistoga } from "next/font/google";
 import localFont from "next/font/local";
 
-
 const baloo = Baloo_2({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -24,9 +23,15 @@ export const calistoga = Calistoga({
   weight: ["400"],
   variable: "--font-calistoga",
 });
+
 const berryFields = localFont({
   src: "./custom/berryfield.woff",
   variable: "--font-berry",
 });
 
-export const fonts = `${baloo.variable} ${inriaSans.variable} ${berryFields.variable} ${berkshireSwash.variable} ${calistoga.variable}`;
+const berlinSans = localFont({
+  src: "./custom/berlin.ttf",
+  variable: "--font-berlins",
+});
+
+export const fonts = `${baloo.variable} ${inriaSans.variable} ${berryFields.variable} ${berkshireSwash.variable} ${calistoga.variable} ${berlinSans.variable}`;

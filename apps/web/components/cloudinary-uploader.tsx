@@ -231,13 +231,13 @@ export default function CloudinaryUploader({
         onDrop={handleDrop}
         onClick={() => fileInputRef.current?.click()}
         className={`
-          relative border-2 border-dashed rounded-[13px] text-center cursor-pointer
+          relative border-2  rounded-[13px] text-center cursor-pointer
           transition-all duration-200 backdrop-blur-[9.25px]
           ${compact ? "p-3" : maxFiles === 1 ? "p-6" : "p-12"}
           ${
             isDragging
               ? "border-white bg-white/30"
-              : "border-white/60 hover:border-white bg-white/20 hover:bg-white/25"
+              : "border-white/60 hover:border-white  hover:bg-white/10"
           }
           ${isUploading ? "pointer-events-none opacity-60" : ""}
         `}
@@ -273,7 +273,7 @@ export default function CloudinaryUploader({
                 </svg>
               </div>
               <p className={`${compact ? "text-xs" : "text-sm"} font-semibold text-white`}>
-                Uploaded ✓
+                Uploaded
               </p>
               {!compact && <p className="text-xs text-white/80">Click to change</p>}
             </>

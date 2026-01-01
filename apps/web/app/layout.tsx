@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { fonts } from "@/fonts";
 import { Toaster } from "sonner";
-import Loader from "@/components/loader";
-
 import { AuthProvider } from "@/contexts/auth-context";
-import Header from "../components/marginals/navbar2";
+import { EventCategoryProvider } from "@/contexts/event-category-context";
+import Header from "../components/marginals/navbar";
 import Footer from "../components/marginals/footer";
+import HOC from "@/components/hoc";
 export const metadata: Metadata = {
   title: "Nitrutsav 2026 | Literary and Cultural Fest - NIT Rourkela",
   description:
@@ -21,28 +21,34 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="theme-color" content="#1A0D51" />
+
       <body className={`${fonts}`}>
         <AuthProvider>
-          {/* <Loader /> */}
-          <Header />
-          {children}
-          <Footer />
-          <Toaster
-            position="top-right"
-            richColors
-            toastOptions={{
-              style: {
-                background: "rgba(255, 255, 255, 0.25)",
-                backdropFilter: "blur(9.25px)",
-                border: "2px solid rgba(255, 255, 255, 0.4)",
-                borderRadius: "13px",
-                color: "#fff",
-                fontFamily: "var(--font-inria)",
-                fontWeight: "500",
-              },
-              className: "font-inria",
-            }}
-          />
+          <EventCategoryProvider>
+            <HOC>
+              <Header />
+              {children}
+              <Footer />
+            </HOC>
+
+            <Toaster
+              position="top-right"
+              richColors
+              toastOptions={{
+                style: {
+                  background: "rgba(255, 255, 255, 0.25)",
+                  backdropFilter: "blur(9.25px)",
+                  border: "2px solid rgba(255, 255, 255, 0.4)",
+                  borderRadius: "13px",
+                  color: "#fff",
+                  fontFamily: "var(--font-inria)",
+                  fontWeight: "500",
+                },
+                className: "font-inria",
+              }}
+            />
+          </EventCategoryProvider>
         </AuthProvider>
       </body>
     </html>
