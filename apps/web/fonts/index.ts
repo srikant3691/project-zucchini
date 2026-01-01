@@ -9,7 +9,7 @@ const baloo = Baloo_2({
 });
 const inriaSans = Inria_Sans({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["300", "400", "700"],
   variable: "--font-inria",
 });
 
