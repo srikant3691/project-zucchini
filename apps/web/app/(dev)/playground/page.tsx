@@ -1,9 +1,9 @@
 "use client";
 
-import Hero from "@/components/hero";
+import Hero from "@/components/hero_v2";
 const Playground = () => {
   return (
-    <div className="herobg">
+    <div>
       <Hero />
     </div>
   );

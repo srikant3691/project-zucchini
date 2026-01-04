@@ -1,4 +1,6 @@
 export const footerImages = {
+  illustration:
+    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767562836/nitrutsav-2026/nan0mcln4so6jjjaq6ci.png",
   background:
     "https://res.cloudinary.com/drf3eatfm/image/upload/v1767257397/nitrutsav-2026/fnbnrf0nstqqbw1peoaq.webp",
   logo: "https://res.cloudinary.com/drf3eatfm/image/upload/v1767123865/nitrutsav-2026/fd86fetpf7gqajn0pb43.svg",

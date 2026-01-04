@@ -22,9 +22,9 @@ export default function FireworksEffects() {
         left: 0,
         width: "100%",
         height: "100vh",
-        zIndex: 0,
+        zIndex: 15,
         pointerEvents: "none",
-        filter: "blur(3px)",
+        // filter: "blur(3px)",
       }}
     >
       <Fireworks options={fireworksOptions} style={{ width: "100%", height: "100%" }} />

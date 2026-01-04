@@ -18,9 +18,11 @@ export const nuLogo =
 export const HERO_IMAGES = {
   mainBackground:
     "https://res.cloudinary.com/drf3eatfm/image/upload/v1767262034/nitrutsav-2026/pmlogcv1tcfjwujylf19.webp",
-  girl: "https://res.cloudinary.com/drf3eatfm/image/upload/v1767475968/nitrutsav-2026/innheabrrareewnspxng.png",
+  girl: "https://res.cloudinary.com/drf3eatfm/image/upload/v1767560849/nitrutsav-2026/opkpmuqo9jsf4chhfgbv.png",
   background:
-    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767206477/nitrutsav-2026/dc25xlv5laevejdndtux.webp",
+    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767555513/nitrutsav-2026/yssv3mevatrv7pipoiqo.png",
+  backgroundMobile:
+    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767559221/nitrutsav-2026/xanfrbskqruq6kbg4et1.png",
   peacockBehind: "https://www.figma.com/api/mcp/asset/956c785f-f510-493e-a8e9-0f83edb9a487",
   owlLeft:
     "https://res.cloudinary.com/drf3eatfm/image/upload/v1767206949/nitrutsav-2026/rav1lsbvo1unchh4ty5b.webp",
@@ -29,7 +31,7 @@ export const HERO_IMAGES = {
   peacockLeft:
     "https://res.cloudinary.com/drf3eatfm/image/upload/v1767206950/nitrutsav-2026/xc5dbtscmo7gnbso2dvf.webp",
 
-  logo: "https://res.cloudinary.com/drf3eatfm/image/upload/v1767004636/nitrutsav-2026/w1colugpdpcwbomeusye.svg",
+  logo: "https://res.cloudinary.com/drf3eatfm/image/upload/v1767557161/nitrutsav-2026/bfh824fnvifwdlpuf8vn.png",
 } as const;
 
 export const PARALLAX_MOUSE = {

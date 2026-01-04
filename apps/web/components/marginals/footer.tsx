@@ -1,8 +1,11 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { Instagram } from "lucide-react";
 import { footerLinks, footerImages } from "@/config/marginals/footer";
 import { WhatsAppIcon } from "@/components/ui/icons";
+import { useIsMobile } from "@/hooks/use-is-mobile";
+import { cn } from "@/lib/utils";
 
 const socialIcons: Record<string, React.ReactNode> = {
   WhatsApp: <WhatsAppIcon className="w-6 h-6" />,
@@ -10,18 +13,34 @@ const socialIcons: Record<string, React.ReactNode> = {
 };
 
 export default function Footer() {
+  const isMobile = useIsMobile();
   return (
-    <footer className="relative w-full font-inria z-10">
-      <div className="absolute inset-0 border-t-2 border-l-2 border-r-2 border-white rounded-t-[80px] pointer-events-none z-20 bg-transparent" />
-
-      <div className="absolute inset-0">
-        <Image
-          src={footerImages.background}
-          alt="Footer Background"
-          fill
-          className="object-cover object-center rounded-t-[80px] pointer-events-none border-2 border-blue-500 bg-black"
-          priority={false}
-        />
+    <footer
+      className={cn("relative w-full bg-transparent font-inria overflow-hidden z-50 bg-black")}
+    >
+      <div className="absolute inset-0 bg-black rounded-t-[80px] border-2 border-white overflow-hidden ">
+        <div className="relative flex justify-between w-full h-full footer-pattern ">
+          <div className="absolute -translate-x-1/2  scale-200 md:scale-150 flex items-center">
+            <Image
+              src={footerImages.illustration}
+              alt="Footer Background"
+              width={isMobile ? 400 : 400}
+              height={isMobile ? 400 : 400}
+              className=""
+              priority={false}
+            />
+          </div>
+          <div className="absolute translate-x-1/2 scale-200 md:scale-150 flex items-center">
+            <Image
+              src={footerImages.illustration}
+              alt="Footer Background"
+              width={isMobile ? 400 : 400}
+              height={isMobile ? 400 : 400}
+              className="rotate-180"
+              priority={false}
+            />
+          </div>
+        </div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-8 md:py-12">

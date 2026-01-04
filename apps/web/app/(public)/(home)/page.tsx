@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import Hero from "@/components/hero";
+import Hero from "@/components/hero_v2";
 import NitrutsavText from "@/components/hero/nitrutsav-text";
 import Image from "next/image";
 import { HERO_IMAGES } from "@/config/hero";
