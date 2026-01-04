@@ -6,6 +6,7 @@ import Hero from "@/components/hero";
 import NitrutsavText from "@/components/hero/nitrutsav-text";
 import Image from "next/image";
 import { HERO_IMAGES } from "@/config/hero";
+import { useAudio } from "@/contexts/audio-context";
 
 const IMAGES_TO_PRELOAD = [
   HERO_IMAGES.mainBackground,
@@ -21,6 +22,7 @@ const IMAGES_TO_PRELOAD = [
 ];
 
 export default function Home() {
+  const { play } = useAudio();
   const [showPreloader, setShowPreloader] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const [removeGif, setRemoveGif] = useState(false);
@@ -31,17 +33,6 @@ export default function Home() {
   const hasAnimated = useRef(false);
 
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem("hasVisitedHome");
-    if (hasVisited) {
-      setShowPreloader(false);
-      setIsActive(true);
-      setRemoveGif(true);
-      setImagesLoaded(true);
-      setTextAnimationComplete(true);
-      hasAnimated.current = true;
-      return;
-    }
-
     let loadedCount = 0;
     const totalImages = IMAGES_TO_PRELOAD.length;
 
@@ -73,7 +64,7 @@ export default function Home() {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Enter" && canEnter && showPreloader && !hasAnimated.current) {
         hasAnimated.current = true;
-        sessionStorage.setItem("hasVisitedHome", "true");
+        play();
         setIsActive(true);
         setShowPreloader(false);
       }
@@ -85,7 +76,7 @@ export default function Home() {
   const handleClick = useCallback(() => {
     if (canEnter && !hasAnimated.current) {
       hasAnimated.current = true;
-      sessionStorage.setItem("hasVisitedHome", "true");
+      play();
       setIsActive(true);
       setShowPreloader(false);
     }
@@ -127,11 +118,11 @@ export default function Home() {
           />
 
           <div className="relative w-[80vw] max-w-[600px] aspect-1146/303">
-            <div className="absolute -top-20 left-0 right-0 text-black text-center font-berlins text-[0.5rem] lsm:flex hidden lsm:text-xs llsmd:text-sm font-semibold items-center justify-center gap-2 pointer-events-none">
+            {/* <div className="absolute -top-20 left-0 right-0 text-black text-center font-berlins text-[0.5rem] lsm:flex hidden lsm:text-xs llsmd:text-sm font-semibold items-center justify-center gap-2 pointer-events-none">
               <span>Made with 🧠 by</span>{" "}
               <Image src="/gdg.png" alt="logo" width={25} height={25} className="-mr-[2px]" />
               <span> DSC NIT ROURKELA</span>
-            </div>
+            </div> */}
 
             <NitrutsavText onAnimationComplete={() => setTextAnimationComplete(true)} />
 

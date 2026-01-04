@@ -28,7 +28,7 @@ export default function Hero() {
     >
       <FireworksEffect />
 
-      <BackgroundLayer mouse={mouse} scrollY={scrollY} />
+      {/* <BackgroundLayer mouse={mouse} scrollY={scrollY} /> */}
 
       <PeacockLeftLayer mouse={mouse} scrollY={scrollY} />
       <PeacockRightLayer mouse={mouse} scrollY={scrollY} />

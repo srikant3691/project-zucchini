@@ -377,7 +377,12 @@ html::-webkit-scrollbar {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+}
+
+@media (min-width: 768px) {
+  .reg-bg-image {
+    background-attachment: fixed;
+  }
 }
 
 .events-bg {
@@ -385,7 +390,12 @@ html::-webkit-scrollbar {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: scroll;
+}
+
+@media (min-width: 768px) {
+  .events-bg {
+    background-attachment: fixed;
+  }
 }
 
 .about-bg-image {
@@ -393,7 +403,12 @@ html::-webkit-scrollbar {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+}
+
+@media (min-width: 768px) {
+  .about-bg-image {
+    background-attachment: fixed;
+  }
 }
 
 .spons-bg-image {
@@ -401,8 +416,14 @@ html::-webkit-scrollbar {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
 }
+
+@media (min-width: 768px) {
+  .spons-bg-image {
+    background-attachment: fixed;
+  }
+}
+
 .step-indicator-active {
   border-radius: 33px;
   background: rgba(255, 255, 255, 0.16);
