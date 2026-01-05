@@ -56,7 +56,7 @@ export default function AboutPage() {
 
   return (
     <div className="relative min-h-screen">
-      <div className="fixed inset-0 w-full h-[200svh] -z-10 pointer-events-none">
+      <div className="fixed inset-0 w-full h-[200svh] md:h-screen -z-10 pointer-events-none">
         <img className="w-full h-full object-cover" alt="Carnival Background" src={background} />
       </div>
 

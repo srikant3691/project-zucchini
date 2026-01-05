@@ -16,7 +16,7 @@ const socialIcons: Record<string, React.ReactNode> = {
 export default function Footer() {
   const isMobile = useIsMobile();
   const pathname = usePathname();
-  const isTransparent = pathname === "/";
+  const isTransparent = pathname === "/" || pathname == "/about";
 
   return (
     <footer

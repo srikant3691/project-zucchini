@@ -6,7 +6,7 @@ import { FAQAccordionItem } from "./accordian";
 import { SectionHeading } from "../ui";
 
 export default function FAQ() {
-  const [expandedIndices, setExpandedIndices] = useState<Set<number>>(new Set([1]));
+  const [expandedIndices, setExpandedIndices] = useState<Set<number>>(new Set());
 
   const handleToggle = (index: number) => {
     setExpandedIndices((prev) => {

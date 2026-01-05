@@ -12,7 +12,7 @@ export const faqData: FAQItem[] = [
   {
     question: "Are there any registration fees for participating in NITRUTSAV Events?",
     answer:
-      "Yes, a small registration fee is there. Check the event details on the website for specific information.",
+      "Yes, a small registration fee is there. Check the register page for specific information.",
   },
   {
     question: "Coming Soon...",

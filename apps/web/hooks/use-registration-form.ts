@@ -16,7 +16,8 @@ interface UseRegistrationFormProps {
 
 export function useRegistrationForm({ user, onComplete }: UseRegistrationFormProps) {
   const [isNitrStudent, setIsNitrStudent] = useState(false);
-  const [wantsAccommodation, setWantsAccommodation] = useState(false);
+  // Accommodation is now always "with accommodation" by default (field hidden in form)
+  const [wantsAccommodation, setWantsAccommodation] = useState(true);
 
   const { formData, errors, handleInputChange, validateForm, setFormData, setErrors } =
     useFormState<Registration>(
@@ -131,7 +132,8 @@ export function useRegistrationForm({ user, onComplete }: UseRegistrationFormPro
         ...formData,
         referralCode: formData.referralCode || undefined,
         isNitrStudent,
-        wantsAccommodation: isNitrStudent ? false : wantsAccommodation,
+        // Always set to true for non-NITR students (accommodation field is hidden)
+        wantsAccommodation: isNitrStudent ? false : true,
       }),
     });
   };

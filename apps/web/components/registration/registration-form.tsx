@@ -59,13 +59,13 @@ export default function RegistrationForm({ user, onComplete }: RegistrationFormP
           onUniversityChange={(v) => handleInputChange("university", v)}
         />
 
-        {/* Accommodation Selection - Only for non-NITR students */}
-        {!isNitrStudent && (
+        {/* Accommodation Selection - Commented out, now always "with accommodation" by default */}
+        {/* {!isNitrStudent && (
           <AccommodationSelector
             wantsAccommodation={wantsAccommodation}
             onToggle={setWantsAccommodation}
           />
-        )}
+        )} */}
 
         {/* Referral Code - Optional */}
         {renderFormFields([referralField], formData, errors, handleInputChange)}
@@ -110,15 +110,13 @@ export default function RegistrationForm({ user, onComplete }: RegistrationFormP
 
       <ErrorDisplay error={submitError} />
 
-      {/* Pricing Summary - Only for non-NITR students */}
+      {/* Pricing Summary - Always showing "with accommodation" fee */}
       {!isNitrStudent && (
         <div className="border-2 border-white/40 rounded-[13px] p-4  backdrop-blur-[9.25px]">
           <div className="flex justify-between items-center">
             <div>
               <p className="text-sm text-white">Registration Fee</p>
-              <p className="text-xs text-white/60">
-                {wantsAccommodation ? "With Accommodation" : "Without Accommodation"}
-              </p>
+              <p className="text-xs text-white/60">With Accommodation</p>
             </div>
             <p className="text-2xl font-bold text-white">₹{registrationFee}</p>
           </div>
