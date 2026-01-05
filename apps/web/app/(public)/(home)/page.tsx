@@ -27,16 +27,24 @@ export default function Home() {
   const isClientNavigation = () => {
     if (typeof window === "undefined") return false;
 
+    // Check if preloader was already shown and dismissed in this session
+    // This handles internal client-side navigation via Next.js Link/router
+    const preloaderDismissed = sessionStorage.getItem("preloaderDismissed");
+    if (preloaderDismissed) {
+      return true;
+    }
+
     const navEntries = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
     const firstEntry = navEntries[0];
     if (firstEntry) {
       const navType = firstEntry.type;
-      // Only treat "back_forward" as client navigation
-      // "navigate" = direct URL entry or link click from external
-      // "reload" = page refresh
-      // Both should show the preloader
+      // "back_forward" = browser back/forward navigation
       if (navType === "back_forward") {
         return true;
+      }
+      // "reload" = page refresh - clear the flag so preloader shows again
+      if (navType === "reload") {
+        sessionStorage.removeItem("preloaderDismissed");
       }
     }
 
@@ -84,6 +92,7 @@ export default function Home() {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Enter" && canEnter && showPreloader && !hasAnimated.current) {
         hasAnimated.current = true;
+        sessionStorage.setItem("preloaderDismissed", "true");
         play();
         setIsActive(true);
         setShowPreloader(false);
@@ -96,6 +105,7 @@ export default function Home() {
   const handleClick = useCallback(() => {
     if (canEnter && !hasAnimated.current) {
       hasAnimated.current = true;
+      sessionStorage.setItem("preloaderDismissed", "true");
       play();
       setIsActive(true);
       setShowPreloader(false);

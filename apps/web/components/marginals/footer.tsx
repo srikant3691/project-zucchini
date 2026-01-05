@@ -28,7 +28,7 @@ export default function Footer() {
               priority={false}
             />
           </div>
-          <div className="absolute translate-x-1/2 scale-200 md:scale-150 flex items-center">
+          <div className="absolute right-0 translate-x-1/2 scale-200 md:scale-150 flex items-center">
             <Image
               src={footerImages.illustration}
               alt="Footer Background"
