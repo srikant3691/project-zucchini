@@ -24,34 +24,12 @@ const IMAGES_TO_PRELOAD = [
 export default function Home() {
   const { play } = useAudio();
 
-  const isClientNavigation = () => {
-    if (typeof window === "undefined") return false;
+  const [showPreloader, setShowPreloader] = useState(() => {
+    if (typeof window === "undefined") return true;
+    if ((window as any).hasShownPreloader) return false;
+    return true;
+  });
 
-    // Check if preloader was already shown and dismissed in this session
-    // This handles internal client-side navigation via Next.js Link/router
-    const preloaderDismissed = sessionStorage.getItem("preloaderDismissed");
-    if (preloaderDismissed) {
-      return true;
-    }
-
-    const navEntries = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
-    const firstEntry = navEntries[0];
-    if (firstEntry) {
-      const navType = firstEntry.type;
-      // "back_forward" = browser back/forward navigation
-      if (navType === "back_forward") {
-        return true;
-      }
-      // "reload" = page refresh - clear the flag so preloader shows again
-      if (navType === "reload") {
-        sessionStorage.removeItem("preloaderDismissed");
-      }
-    }
-
-    return false;
-  };
-
-  const [showPreloader, setShowPreloader] = useState(() => !isClientNavigation());
   const [isActive, setIsActive] = useState(false);
   const [removeGif, setRemoveGif] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -88,29 +66,27 @@ export default function Home() {
 
   const canEnter = imagesLoaded && textAnimationComplete;
 
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Enter" && canEnter && showPreloader && !hasAnimated.current) {
-        hasAnimated.current = true;
-        sessionStorage.setItem("preloaderDismissed", "true");
-        play();
-        setIsActive(true);
-        setShowPreloader(false);
-      }
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [showPreloader, canEnter]);
-
-  const handleClick = useCallback(() => {
+  const handleStart = useCallback(() => {
     if (canEnter && !hasAnimated.current) {
       hasAnimated.current = true;
-      sessionStorage.setItem("preloaderDismissed", "true");
+
+      (window as any).hasShownPreloader = true;
+
       play();
       setIsActive(true);
       setShowPreloader(false);
     }
-  }, [canEnter]);
+  }, [canEnter, play]);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Enter" && showPreloader) {
+        handleStart();
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [showPreloader, handleStart]);
 
   useEffect(() => {
     if (isActive && !removeGif) {
@@ -136,7 +112,7 @@ export default function Home() {
     <>
       {showPreloader && (
         <div
-          onClick={handleClick}
+          onClick={handleStart}
           className="fixed inset-0 z-9999 flex items-center justify-center bg-transparent cursor-pointer"
         >
           <Image
@@ -148,14 +124,7 @@ export default function Home() {
           />
 
           <div className="relative w-[80vw] max-w-[600px] aspect-1146/303">
-            {/* <div className="absolute -top-20 left-0 right-0 text-black text-center font-berlins text-[0.5rem] lsm:flex hidden lsm:text-xs llsmd:text-sm font-semibold items-center justify-center gap-2 pointer-events-none">
-              <span>Made with 🧠 by</span>{" "}
-              <Image src="/gdg.png" alt="logo" width={25} height={25} className="-mr-[2px]" />
-              <span> DSC NIT ROURKELA</span>
-            </div> */}
-
             <NitrutsavText onAnimationComplete={() => setTextAnimationComplete(true)} />
-
             <div className="text-black mt-5 text-center font-berlins text-xs lsm:text-base llsmd:text-lg font-semibold relative min-h-14 flex items-center justify-center">
               {!textAnimationComplete ? (
                 <span className="animate-pulse">LOADING... {loadProgress}%</span>

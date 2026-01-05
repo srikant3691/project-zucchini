@@ -18,7 +18,7 @@ export default function Footer() {
     <footer className={cn("relative w-full font-inria overflow-hidden z-50 bg-black")}>
       <div className="absolute inset-0 bg-black rounded-t-[80px] border-2 border-white overflow-hidden ">
         <div className="relative flex justify-between w-full h-full footer-pattern ">
-          <div className="absolute -translate-x-1/2  scale-200 md:scale-150 flex items-center">
+          <div className="absolute -translate-x-1/2  scale-100 md:scale-150 flex items-center">
             <Image
               src={footerImages.illustration}
               alt="Footer Background"
@@ -28,7 +28,7 @@ export default function Footer() {
               priority={false}
             />
           </div>
-          <div className="absolute right-0 translate-x-1/2 scale-200 md:scale-150 flex items-center">
+          <div className="absolute right-0 translate-x-1/2 scale-100 md:scale-150 flex items-center">
             <Image
               src={footerImages.illustration}
               alt="Footer Background"
