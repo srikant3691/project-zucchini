@@ -1,43 +1,43 @@
 export const heroImages = {
   background:
-    "https://res.cloudinary.com/drf3eatfm/image/upload/v1766131751/nitrutsav-2026/ym2o9u5n0owuoznofbyb.png",
-  logo: "https://res.cloudinary.com/drf3eatfm/image/upload/v1766155118/Edition_Logo_jjz1jx.svg",
+    "https://res.cloudinary.com/domaovjhf/image/upload/v1767961237/nitrutsav-2026/ym2o9u5n0owuoznofbyb.png",
+  logo: "https://res.cloudinary.com/domaovjhf/image/upload/v1767961238/Edition_Logo_jjz1jx.svg",
   ellipse:
-    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767261219/nitrutsav-2026/zexugybdjfsckpqzmb5u.webp",
+    "https://res.cloudinary.com/domaovjhf/image/upload/v1767961241/nitrutsav-2026/zexugybdjfsckpqzmb5u.webp",
 };
 
 export const heroImage =
-  "https://res.cloudinary.com/drf3eatfm/image/upload/v1767005164/nitrutsav-2026/gsnj4mjupteth0nktnla.jpg";
+  "https://res.cloudinary.com/domaovjhf/image/upload/v1767961243/nitrutsav-2026/gsnj4mjupteth0nktnla.jpg";
 
 export const ladyImage =
-  "https://res.cloudinary.com/drf3eatfm/image/upload/v1767004633/nitrutsav-2026/xjfr1fpdbkutyggjhyuh.svg";
+  "https://res.cloudinary.com/domaovjhf/image/upload/v1767961248/nitrutsav-2026/xjfr1fpdbkutyggjhyuh.svg";
 
 export const nuLogo =
-  "https://res.cloudinary.com/drf3eatfm/image/upload/v1767004636/nitrutsav-2026/w1colugpdpcwbomeusye.svg";
+  "https://res.cloudinary.com/domaovjhf/image/upload/v1767961251/nitrutsav-2026/w1colugpdpcwbomeusye.svg";
 
 export const HERO_IMAGES = {
   mainBackground:
-    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767262034/nitrutsav-2026/pmlogcv1tcfjwujylf19.webp",
-  girl: "https://res.cloudinary.com/drf3eatfm/image/upload/v1767560849/nitrutsav-2026/opkpmuqo9jsf4chhfgbv.png",
+    "https://res.cloudinary.com/domaovjhf/image/upload/v1767961255/nitrutsav-2026/pmlogcv1tcfjwujylf19.webp",
+  girl: "https://res.cloudinary.com/domaovjhf/image/upload/v1767961257/nitrutsav-2026/opkpmuqo9jsf4chhfgbv.png",
   background:
-    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767555513/nitrutsav-2026/yssv3mevatrv7pipoiqo.png",
+    "https://res.cloudinary.com/domaovjhf/image/upload/v1767961258/nitrutsav-2026/yssv3mevatrv7pipoiqo.png",
   backgroundMobile:
-    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767559221/nitrutsav-2026/xanfrbskqruq6kbg4et1.png",
+    "https://res.cloudinary.com/domaovjhf/image/upload/v1767961259/nitrutsav-2026/xanfrbskqruq6kbg4et1.png",
   peacockBehind: "https://www.figma.com/api/mcp/asset/956c785f-f510-493e-a8e9-0f83edb9a487",
   owlLeft:
-    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767206949/nitrutsav-2026/rav1lsbvo1unchh4ty5b.webp",
+    "https://res.cloudinary.com/domaovjhf/image/upload/v1767961260/nitrutsav-2026/rav1lsbvo1unchh4ty5b.webp",
   owlRight:
-    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767206949/nitrutsav-2026/l9yqzy8xgeu9w9ds4rrw.webp",
+    "https://res.cloudinary.com/domaovjhf/image/upload/v1767961261/nitrutsav-2026/l9yqzy8xgeu9w9ds4rrw.webp",
   peacockLeft:
-    "https://res.cloudinary.com/drf3eatfm/image/upload/v1767206950/nitrutsav-2026/xc5dbtscmo7gnbso2dvf.webp",
+    "https://res.cloudinary.com/domaovjhf/image/upload/v1767961262/nitrutsav-2026/xc5dbtscmo7gnbso2dvf.webp",
 
-  logo: "https://res.cloudinary.com/drf3eatfm/image/upload/v1767557161/nitrutsav-2026/bfh824fnvifwdlpuf8vn.png",
+  logo: "https://res.cloudinary.com/domaovjhf/image/upload/v1767961263/nitrutsav-2026/bfh824fnvifwdlpuf8vn.png",
 } as const;
 
 export const LOADER_IMAGES = {
-  background: "https://res.cloudinary.com/dz4lwydkp/image/upload/v1767698678/loading_pm1kpp.jpg",
+  background: "https://res.cloudinary.com/domaovjhf/image/upload/v1767961264/loading_pm1kpp.jpg",
   inkSplash:
-    "https://res.cloudinary.com/dz4lwydkp/image/upload/v1767698698/ink-spread-5_bges7b.gif",
+    "https://res.cloudinary.com/domaovjhf/image/upload/v1767961265/ink-spread-5_bges7b.gif",
 };
 
 export const PARALLAX_MOUSE = {

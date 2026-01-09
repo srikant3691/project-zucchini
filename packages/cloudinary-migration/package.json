@@ -1,0 +1,19 @@
+{
+  "name": "@repo/cloudinary-migration",
+  "version": "1.0.0",
+  "main": "migrate.ts",
+  "scripts": {
+    "migrate": "tsx migrate.ts"
+  },
+  "dependencies": {
+    "cloudinary": "^2.0.0",
+    "dotenv": "^16.4.1",
+    "glob": "^10.3.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.3.3"
+  }
+}

@@ -28,4 +28,4 @@ export const titleSponsor = {
 };
 
 export const background =
-  "https://res.cloudinary.com/drf3eatfm/image/upload/v1767283927/nitrutsav-2026/ggdb93tvuuukh6csh745.webp";
+  "https://res.cloudinary.com/domaovjhf/image/upload/v1767961232/nitrutsav-2026/ggdb93tvuuukh6csh745.webp";
