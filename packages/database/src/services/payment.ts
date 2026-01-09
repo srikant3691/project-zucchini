@@ -49,7 +49,7 @@ export const updatePaymentStatusByTxnId = async (txnId: string, isVerified: bool
   });
 };
 
-export type TransactionStatus = "success" | "failure";
+export type TransactionStatus = "success" | "error";
 
 export const updateTransactionStatus = async (txnId: string, status: TransactionStatus) => {
   const [transaction] = await db

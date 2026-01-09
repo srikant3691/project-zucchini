@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     const origin = req.nextUrl.origin;
 
     if (params.txnid) {
-      await updateTransactionStatus(params.txnid, status === "success" ? "success" : "failure");
+      await updateTransactionStatus(params.txnid, status === "success" ? "success" : "error");
     }
 
     if (status === "success") {
