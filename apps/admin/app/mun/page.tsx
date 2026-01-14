@@ -17,6 +17,7 @@ import {
 import Header from "@/components/header";
 import { DataTable } from "@/components/ui/data-table/data-table";
 import { munColumns, MunRegistration } from "@/components/ui/data-table/mun-columns";
+import { MunRegistrationModal } from "@/components/mun-registration-modal";
 import { useMunTeams, useMunRegistrations } from "@/lib/queries";
 import { useDebouncedSearch } from "@/lib/hooks/use-debounced-search";
 import { searchMunUsers } from "@/lib/api";
@@ -243,6 +244,13 @@ export default function MunPage() {
   const [expandedTeams, setExpandedTeams] = useState<Set<string>>(new Set());
   const [view, setView] = useState<"cards" | "table">("table");
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedRegistration, setSelectedRegistration] = useState<MunRegistration | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleRowClick = useCallback((registration: MunRegistration) => {
+    setSelectedRegistration(registration);
+    setModalOpen(true);
+  }, []);
 
   const loading = teamsLoading || registrationsLoading;
 
@@ -365,7 +373,7 @@ export default function MunPage() {
         </div>
 
         {view === "table" ? (
-          <DataTable columns={munColumns} data={searchResults} />
+          <DataTable columns={munColumns} data={searchResults} onRowClick={handleRowClick} />
         ) : (
           <>
             {/* Moot Court Teams Section */}
@@ -411,6 +419,12 @@ export default function MunPage() {
           </>
         )}
       </main>
+
+      <MunRegistrationModal
+        registration={selectedRegistration}
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+      />
     </div>
   );
 }

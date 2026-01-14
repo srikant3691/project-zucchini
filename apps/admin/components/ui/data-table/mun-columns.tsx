@@ -29,6 +29,7 @@ export type MunRegistration = {
   isVerified: boolean;
   isPaymentVerified: boolean;
   registeredAt: string;
+  preferredPortfolio: string | null;
 };
 
 export const munColumns: ColumnDef<MunRegistration>[] = [
@@ -88,6 +89,19 @@ export const munColumns: ColumnDef<MunRegistration>[] = [
           }`}
         >
           {committeeLabels[committee] || committee}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: "preferredPortfolio",
+    header: "Portfolio",
+    cell: ({ row }) => {
+      const portfolio = row.getValue("preferredPortfolio") as string | null;
+      if (!portfolio) return <span className="text-zinc-600">-</span>;
+      return (
+        <span className="text-xs font-medium px-2 py-1 rounded bg-cyan-500/20 text-cyan-400">
+          {portfolio}
         </span>
       );
     },

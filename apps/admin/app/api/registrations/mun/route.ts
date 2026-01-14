@@ -34,6 +34,7 @@ export async function GET(request: Request) {
             committeeChoice: m.registration.committeeChoice,
             isNitrStudent: m.registration.isNitrStudent,
             registeredAt: m.registration.registeredAt,
+            preferredPortfolio: m.registration.preferredPortfolio,
           })),
         })),
       };
@@ -57,6 +58,7 @@ export async function GET(request: Request) {
           isVerified: r.isVerified,
           isPaymentVerified: r.isPaymentVerified,
           registeredAt: r.registeredAt,
+          preferredPortfolio: r.preferredPortfolio,
         })),
         pagination: {
           hasMore: data.hasMore,

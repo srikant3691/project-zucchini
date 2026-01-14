@@ -17,6 +17,7 @@ export type NitrutsavRegistration = {
   isVerified: boolean;
   isPaymentVerified: boolean;
   registeredAt: string;
+  idCard: string | null;
 };
 
 export const nitrutsavColumns: ColumnDef<NitrutsavRegistration>[] = [

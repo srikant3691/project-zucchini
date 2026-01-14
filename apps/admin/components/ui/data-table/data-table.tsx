@@ -37,12 +37,14 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   emptyMessage?: string;
+  onRowClick?: (row: TData) => void;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   emptyMessage = "No users found.",
+  onRowClick,
 }: DataTableProps<TData, TValue>) {
   /* hooks first */
   const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -98,7 +100,11 @@ export function DataTable<TData, TValue>({
             <TableBody>
               {table.getRowModel().rows.length ? (
                 table.getRowModel().rows.map((row) => (
-                  <TableRow key={row.id} className="border-zinc-800 hover:bg-zinc-800/60">
+                  <TableRow
+                    key={row.id}
+                    className={`border-zinc-800 hover:bg-zinc-800/60 ${onRowClick ? "cursor-pointer" : ""}`}
+                    onClick={() => onRowClick?.(row.original)}
+                  >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id} className="py-3 text-sm text-zinc-200">
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}

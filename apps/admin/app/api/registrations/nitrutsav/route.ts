@@ -30,6 +30,7 @@ export async function GET(request: Request) {
             isVerified: u.isVerified,
             isPaymentVerified: u.transaction?.isVerified || false,
             registeredAt: u.registeredAt,
+            idCard: u.idCard,
           })),
           isSearchResult: true,
         },
@@ -60,6 +61,7 @@ export async function GET(request: Request) {
           isVerified: u.isVerified,
           isPaymentVerified: u.transaction?.isVerified || false,
           registeredAt: u.registeredAt,
+          idCard: u.idCard,
         })),
         pagination: {
           hasMore: data.hasMore,

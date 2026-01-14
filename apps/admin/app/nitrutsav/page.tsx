@@ -8,6 +8,7 @@ import {
   nitrutsavColumns,
   NitrutsavRegistration,
 } from "@/components/ui/data-table/nitrutsav-columns";
+import { NitrutsavRegistrationModal } from "@/components/nitrutsav-registration-modal";
 import { useNitrutsavRegistrations } from "@/lib/queries";
 import { useDebouncedSearch } from "@/lib/hooks/use-debounced-search";
 import { searchNitrutsavUsers } from "@/lib/api";
@@ -38,9 +39,21 @@ function StatCard({
   );
 }
 
+type FilterTab = "all" | "nitr" | "non-nitr";
+
 export default function NitrutsavPage() {
   const { data, isLoading } = useNitrutsavRegistrations();
   const [searchQuery, setSearchQuery] = useState("");
+  const [filterTab, setFilterTab] = useState<FilterTab>("all");
+  const [selectedRegistration, setSelectedRegistration] = useState<NitrutsavRegistration | null>(
+    null
+  );
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleRowClick = useCallback((registration: NitrutsavRegistration) => {
+    setSelectedRegistration(registration);
+    setModalOpen(true);
+  }, []);
 
   const registrations = useMemo(
     () => (data?.registrations || []) as unknown as NitrutsavRegistration[],
@@ -70,6 +83,13 @@ export default function NitrutsavPage() {
     minQueryLength: 2,
     onDatabaseSearch: handleDatabaseSearch,
   });
+
+  // Filter results based on selected tab
+  const filteredResults = useMemo(() => {
+    if (filterTab === "all") return searchResults;
+    if (filterTab === "nitr") return searchResults.filter((r) => r.isNitrStudent);
+    return searchResults.filter((r) => !r.isNitrStudent);
+  }, [searchResults, filterTab]);
 
   if (isLoading) {
     return (
@@ -121,9 +141,42 @@ export default function NitrutsavPage() {
           </div>
         )}
 
-        {/* Search Bar */}
-        <div className="mb-6">
-          <div className="relative max-w-md">
+        {/* Filter Tabs and Search Bar */}
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          {/* Filter Tabs */}
+          <div className="flex items-center gap-1 bg-zinc-900 border border-zinc-800 rounded-lg p-1">
+            <button
+              onClick={() => setFilterTab("all")}
+              className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                filterTab === "all" ? "bg-zinc-700 text-white" : "text-zinc-400 hover:text-zinc-200"
+              }`}
+            >
+              All
+            </button>
+            <button
+              onClick={() => setFilterTab("nitr")}
+              className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                filterTab === "nitr"
+                  ? "bg-purple-500/20 text-purple-400"
+                  : "text-zinc-400 hover:text-zinc-200"
+              }`}
+            >
+              NITR
+            </button>
+            <button
+              onClick={() => setFilterTab("non-nitr")}
+              className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                filterTab === "non-nitr"
+                  ? "bg-orange-500/20 text-orange-400"
+                  : "text-zinc-400 hover:text-zinc-200"
+              }`}
+            >
+              Non-NITR
+            </button>
+          </div>
+
+          {/* Search Bar */}
+          <div className="relative max-w-md w-full sm:w-auto">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
             <input
               type="text"
@@ -140,8 +193,14 @@ export default function NitrutsavPage() {
           </div>
         </div>
 
-        <DataTable columns={nitrutsavColumns} data={searchResults} />
+        <DataTable columns={nitrutsavColumns} data={filteredResults} onRowClick={handleRowClick} />
       </main>
+
+      <NitrutsavRegistrationModal
+        registration={selectedRegistration}
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+      />
     </div>
   );
 }

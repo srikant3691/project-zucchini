@@ -46,6 +46,7 @@ export type TeamMember = {
   committeeChoice: string;
   isNitrStudent: boolean;
   registeredAt: string;
+  preferredPortfolio: string | null;
 };
 
 export type Team = {
@@ -100,12 +101,11 @@ export async function fetchMunTeams(): Promise<{ teams: Team[]; stats: MunStats 
 
 export async function fetchMunRegistrations(): Promise<{
   registrations: TeamMember[];
-  stats: MunStats;
 }> {
   const data = await fetchJson<{
     success: boolean;
-    data: { registrations: TeamMember[]; stats: MunStats };
-  }>("/api/registrations/mun?stats=true&pageSize=300");
+    data: { registrations: TeamMember[] };
+  }>("/api/registrations/mun?pageSize=300");
   return data.data;
 }
 
