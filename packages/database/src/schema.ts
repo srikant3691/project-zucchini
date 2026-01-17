@@ -38,7 +38,7 @@ export const usersTable = pgTable("users", {
   university: varchar({ length: 255 }).notNull(),
   rollNumber: varchar({ length: 100 }).notNull(),
   idCard: text().notNull(),
-  referralCode: varchar({ length: 10 }),
+  referralCode: varchar({ length: 50 }),
   referredBy: integer(),
   permission: text().notNull(),
   undertaking: text().notNull(),

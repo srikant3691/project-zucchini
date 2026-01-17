@@ -18,10 +18,22 @@ export const sponsors = [
     type: "Platinum Sponsor",
   },
   {
+    name: "SBI",
+    href: "https://www.easemytrip.com/",
+    logo: "https://res.cloudinary.com/dz4lwydkp/image/upload/v1768661075/nitrutsav-2026/k9tkpghhnuryfdgy50gp.png",
+    type: "Transaction Partner",
+  },
+  {
     name: "GAIL (India) Limited",
     href: "https://gailonline.com/",
     logo: "https://res.cloudinary.com/dz4lwydkp/image/upload/v1768413818/nitrutsav-2026/cwc8fvzjcirbwcdl1cgj.png",
     type: "Energy Partner",
+  },
+  {
+    name: "Ease My Trip",
+    href: "https://www.easemytrip.com/",
+    logo: "https://res.cloudinary.com/dz4lwydkp/image/upload/v1768661344/nitrutsav-2026/ndpnhsqaoxhgluo8fkr4.svg",
+    type: "Travel Partner",
   },
 ];
 

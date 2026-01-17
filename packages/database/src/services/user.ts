@@ -88,7 +88,8 @@ export const getReferralLeaderboard = async (limit: number = 50) => {
       id: usersTable.id,
       referredBy: usersTable.referredBy,
     })
-    .from(usersTable);
+    .from(usersTable)
+    .where(eq(usersTable.isVerified, true));
 
   const referralCounts = new Map<number, number>();
   allUsers.forEach((user) => {

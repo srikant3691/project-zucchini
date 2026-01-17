@@ -5,7 +5,7 @@ import React, { JSX } from "react";
 
 export const metadata = generatePageMetadata("sponsors");
 
-const SPONSOR_ORDER = ["Major Sponsor", "Platinum Sponsor", "Energy Partner"];
+const sponsorOrder = [...new Set(sponsors.map((s) => s.type || "Other"))];
 
 export default function SponsorsPage(): JSX.Element {
   const groupedSponsors = sponsors.reduce(
@@ -36,7 +36,7 @@ export default function SponsorsPage(): JSX.Element {
         </div> */}
 
         <div className="flex flex-col items-center w-full gap-32">
-          {SPONSOR_ORDER.map((type) => {
+          {sponsorOrder.map((type) => {
             const sponsors = groupedSponsors[type];
             if (!sponsors || sponsors.length === 0) return null;
 

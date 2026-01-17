@@ -71,9 +71,6 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
   });
 
-  /* SAFE FILTER ACCESS */
-  const emailColumn = table.getColumn("email");
-
   return (
     <div className="min-h-screen ">
       <div className="mx-auto w-full rounded-xl border border-zinc-800 bg-zinc-900 shadow-lg">
