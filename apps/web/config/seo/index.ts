@@ -323,6 +323,13 @@ export function generateDefaultMetadata(): Metadata {
     verification: {},
     category: "events",
     classification: "Cultural Festival",
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/icon.png", type: "image/png", sizes: "192x192" },
+      ],
+      apple: "/apple-icon.png",
+    },
   };
 }
 

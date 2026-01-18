@@ -27,6 +27,7 @@ const categories: Record<string, any[]> = {
 export default function Event() {
   const { activeCategory, setActiveCategory } = useEventCategory();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const textSwiperRef = useRef<any>(null);
 
   const currentEvents = categories[activeCategory] || ProShows;
@@ -54,13 +55,18 @@ export default function Event() {
       <div className="relative z-10 flex flex-col w-full min-h-screen ">
         {/* HERO SWIPER */}
         <div className="flex flex-col items-center justify-center mt-6 md:mt-8 mb-6">
-          <EventSwiper events={currentEvents} onSlideChange={setActiveIndex} />
+          <EventSwiper
+            events={currentEvents}
+            onSlideChange={setActiveIndex}
+            disabled={isModalOpen}
+          />
         </div>
 
         <div className="w-full max-w-[90vw] mx-auto mt-2 mb-2 flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-14 px-4 text-white">
           <EventInfo
             events={currentEvents}
             onSwiper={(swiper) => (textSwiperRef.current = swiper)}
+            onModalChange={setIsModalOpen}
           />
 
           <EventCategory

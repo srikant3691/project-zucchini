@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, FreeMode, Autoplay } from "swiper/modules";
@@ -10,11 +10,25 @@ import "swiper/css";
 export default function EventSwiper({
   events,
   onSlideChange,
+  disabled = false,
 }: {
   events: any[];
   onSlideChange?: (index: number) => void;
+  disabled?: boolean;
 }) {
   const swiperRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      if (disabled) {
+        swiperRef.current.autoplay?.stop();
+        swiperRef.current.disable();
+      } else {
+        swiperRef.current.enable();
+        swiperRef.current.autoplay?.start();
+      }
+    }
+  }, [disabled]);
 
   return (
     <div className="relative w-full max-w-[90vw] text-white py-4 pl-4 md:pl-0">
