@@ -4,7 +4,7 @@ export const ProShows = [
     rulebook: `https://drive.google.com/open?id=1MW7JKs6P3QLbeyG16vx1MrIc0aEUvlWA`,
     name: `Maktub`,
     description: `Join us for a magical evening of music under the stars.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768921355/nitrutsav-2026/z1od7xwbjjn0vincg82e.webp`,
+    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768925861/nitrutsav-2026/r0qr1syzchukdowocq4l.webp`,
   },
   {
     club: ``,
