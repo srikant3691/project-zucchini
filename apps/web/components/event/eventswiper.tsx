@@ -38,7 +38,7 @@ export default function EventSwiper({
         spaceBetween={32}
         centeredSlides={false}
         loop={true}
-        slideToClickedSlide={false} // handled manually
+        slideToClickedSlide={false}
         speed={500}
         autoplay={{
           delay: 10000,
