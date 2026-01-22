@@ -1,7 +1,7 @@
 [![Starware](https://img.shields.io/badge/Starware-⭐-black?labelColor=f9b00d)](https://github.com/zepfietje/starware)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Contributors][contributors-shield]][contributors-url]
@@ -243,22 +243,21 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="20%"><a href="https://ayussh.vercel.app/"><img src="https://avatars.githubusercontent.com/u/135319056?v=4?s=100" width="100px;" alt="Ayush"/><br /><sub><b>Ayush</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=ayussh-2" title="Code">💻</a> <a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=ayussh-2" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="20%"><a href="http://tiyas.vercel.app"><img src="https://avatars.githubusercontent.com/u/191564417?v=4?s=100" width="100px;" alt="Tiyas"/><br /><sub><b>Tiyas</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=Tiyas04" title="Code">💻</a></td>
-      <td align="center" valign="top" width="20%"><a href="https://github.com/srikant3691"><img src="https://avatars.githubusercontent.com/u/180011583?v=4?s=100" width="100px;" alt="Srikant Panigrahy"/><br /><sub><b>Srikant Panigrahy</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=srikant3691" title="Code">💻</a></td>
-      <td align="center" valign="top" width="20%"><a href="https://github.com/ayantik2006"><img src="https://avatars.githubusercontent.com/u/99005057?v=4?s=100" width="100px;" alt="Ayantik Sarkar"/><br /><sub><b>Ayantik Sarkar</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=ayantik2006" title="Code">💻</a></td>
-      <td align="center" valign="top" width="20%"><a href="https://github.com/AshutoshMishra1615"><img src="https://avatars.githubusercontent.com/u/135343059?v=4?s=100" width="100px;" alt="AshutoshMishra1615"/><br /><sub><b>AshutoshMishra1615</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=AshutoshMishra1615" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://ayussh.vercel.app/"><img src="https://avatars.githubusercontent.com/u/135319056?v=4?s=100" width="100px;" alt="Ayush"/><br /><sub><b>Ayush</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=ayussh-2" title="Code">💻</a> <a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=ayussh-2" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://tiyas.vercel.app"><img src="https://avatars.githubusercontent.com/u/191564417?v=4?s=100" width="100px;" alt="Tiyas"/><br /><sub><b>Tiyas</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=Tiyas04" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/srikant3691"><img src="https://avatars.githubusercontent.com/u/180011583?v=4?s=100" width="100px;" alt="Srikant Panigrahy"/><br /><sub><b>Srikant Panigrahy</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=srikant3691" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ayantik2006"><img src="https://avatars.githubusercontent.com/u/99005057?v=4?s=100" width="100px;" alt="Ayantik Sarkar"/><br /><sub><b>Ayantik Sarkar</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=ayantik2006" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/AshutoshMishra1615"><img src="https://avatars.githubusercontent.com/u/135343059?v=4?s=100" width="100px;" alt="AshutoshMishra1615"/><br /><sub><b>AshutoshMishra1615</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=AshutoshMishra1615" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/priyanshunitr"><img src="https://avatars.githubusercontent.com/u/224602597?v=4?s=100" width="100px;" alt="Priyanshu Sahu"/><br /><sub><b>Priyanshu Sahu</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=priyanshunitr" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/shuvam776"><img src="https://avatars.githubusercontent.com/u/214760020?v=4?s=100" width="100px;" alt="Shuvam Satapathi"/><br /><sub><b>Shuvam Satapathi</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=shuvam776" title="Code">💻</a></td>
     </tr>
     <tr>
-      <td align="center" valign="top" width="20%"><a href="https://github.com/priyanshunitr"><img src="https://avatars.githubusercontent.com/u/224602597?v=4?s=100" width="100px;" alt="Priyanshu Sahu"/><br /><sub><b>Priyanshu Sahu</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=priyanshunitr" title="Code">💻</a></td>
-            <td align="center" valign="top" width="20%"><a href="https://github.com/shuvam776"><img src="https://avatars.githubusercontent.com/u/214760020?v=4?s=100" width="100px;" alt="Shuvam Satapathi"/><br /><sub><b>Shuvam Satapathi</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=shuvam776" title="Code">💻</a></td>
-      <td align="center" valign="top" width="20%"><a href="https://github.com/HIMANSHU6001"><img src="https://avatars.githubusercontent.com/u/92459082?v=4?s=100" width="100px;" alt="Himanshu Kaushik"/><br /><sub><b>Himanshu Kaushik</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=HIMANSHU6001" title="Code">💻</a></td>
-      <td align="center" valign="top" width="20%"><a href="https://github.com/parthsaxena2005"><img src="https://avatars.githubusercontent.com/u/71390430?v=4?s=100" width="100px;" alt="parthsaxena2005"/><br /><sub><b>parthsaxena2005</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=parthsaxena2005" title="Code">💻</a></td>
-      <td align="center" valign="top" width="20%"></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/HIMANSHU6001"><img src="https://avatars.githubusercontent.com/u/92459082?v=4?s=100" width="100px;" alt="Himanshu Kaushik"/><br /><sub><b>Himanshu Kaushik</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=HIMANSHU6001" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/parthsaxena2005"><img src="https://avatars.githubusercontent.com/u/71390430?v=4?s=100" width="100px;" alt="parthsaxena2005"/><br /><sub><b>parthsaxena2005</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=parthsaxena2005" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/SnehaAgarwal31"><img src="https://avatars.githubusercontent.com/u/194969842?v=4?s=100" width="100px;" alt="SnehaAgarwal31"/><br /><sub><b>SnehaAgarwal31</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=SnehaAgarwal31" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
-
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
