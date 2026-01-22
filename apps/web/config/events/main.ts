@@ -5,7 +5,7 @@ export const MainEvents = [
     name: `The Quest of Chromara`,
     description: `The Quest of Chromara is a treasure hunt where every clue leads you
     closer to victory! Compete solo or in teams of up to three, scan QR codes at each checkpoint, crack clever clues, and race across locations. Think fast, move faster. The quickest team to finish wins it all!`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933370/nitrutsav-2026/b2iywkew9e1zgllizrbh.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110701/nitrutsav-2026/b2iywkew9e1zgllizrbh.webp`,
   },
   {
     club: `Kalaam`,
@@ -17,7 +17,7 @@ export const MainEvents = [
     and English and based on a wide variety of themes. We will be having our own hosts. The
     duration of all the performances (club members), including the hosting, will be approximately
     1 hour 30 minutes.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933385/nitrutsav-2026/zz6fsezawjd25ev7jiwg.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110702/nitrutsav-2026/zz6fsezawjd25ev7jiwg.webp`,
   },
   {
     club: `Kalaam`,
@@ -27,7 +27,7 @@ export const MainEvents = [
 random topic for sixty seconds. The challenge is to talk without hesitation, repetition,
 or deviation. It tests mental agility, vocabulary, and composure, as opponents can
 "challenge" to steal the remaining time.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933384/nitrutsav-2026/keqoemm1hvccf9v4vry4.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110703/nitrutsav-2026/keqoemm1hvccf9v4vry4.webp`,
   },
   {
     club: `OSS`,
@@ -38,7 +38,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     solving clues based on Odia history, traditions, art, festivals,
     cuisine, and personalities, participants unlock checkpoints. The
     first team to finish all stages wins.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933392/nitrutsav-2026/uzit3nfvngopr4kdvere.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110705/nitrutsav-2026/uzit3nfvngopr4kdvere.webp`,
   },
   {
     club: `OSS`,
@@ -50,7 +50,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     precision. The event promotes heritage, artistic skills, and
     appreciation of indigenous art forms while encouraging
     originality and aesthetic excellence.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933382/nitrutsav-2026/plnvutqbwd23eebqtky7.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110706/nitrutsav-2026/plnvutqbwd23eebqtky7.webp`,
   },
   {
     club: `Fusion`,
@@ -60,7 +60,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     open to all students. Step into a mystical ballroom filled with
     fairy lights and fog for a night of mystery and elegance.
     Features high-energy EDM sets, themed photo booths`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933372/nitrutsav-2026/ro8wyn9gl09cwtrmpbia.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110707/nitrutsav-2026/ro8wyn9gl09cwtrmpbia.webp`,
   },
   {
     club: `Clarion`,
@@ -70,7 +70,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     and each crew member holds a secret. As investigation reporters,
     you must interrogate the cast and crew, and make reports to
     publish your own journal about the real killer.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768935171/nitrutsav-2026/kqszmvopea4ewm4fmltm.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110708/nitrutsav-2026/kqszmvopea4ewm4fmltm.webp`,
   },
   {
     club: `Clarion`,
@@ -80,7 +80,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     basis of your wit and presence of mind. Whether it’s the blues of a
     tragic hero or the golden age of cinema, Litlympics tests your
     knowledge across the entire spectrum.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768936178/nitrutsav-2026/ommrpxtbegnjwkagylxw.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110710/nitrutsav-2026/ommrpxtbegnjwkagylxw.webp`,
   },
   {
     club: `Fusion`,
@@ -91,7 +91,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     Roadies-style event features raw auditions, spontaneous dares,
     and a pageant walk battle to crown the ultimate Campus Diva
     and Campus Hunk.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933380/nitrutsav-2026/jxt7zqbocrhe8ds5exze.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110711/nitrutsav-2026/jxt7zqbocrhe8ds5exze.webp`,
   },
   {
     club: `Rainbow Dot`,
@@ -101,7 +101,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     cupcake making, journaling, and canvas painting, concluding with a joyful carnival-style parade.
     The event promotes inclusivity, self-expression, and community bonding through colours, art, and
     shared experiences.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933374/nitrutsav-2026/ojc1iprneel3z2flaty5.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110712/nitrutsav-2026/ojc1iprneel3z2flaty5.webp`,
   },
   {
     club: `Hourglass`,
@@ -109,14 +109,14 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     name: `Unpopular Opinion Courtroom`,
     description: `In this entertaining and humorous speaking activity, participants enter a mock courtroom where
     they must confidently defend a strange, funny, or highly unpopular opinion.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933393/nitrutsav-2026/rhtuf2a7htqspiblm0vm.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110713/nitrutsav-2026/rhtuf2a7htqspiblm0vm.webp`,
   },
   {
     club: `Hourglass`,
     rulebook: `https://drive.google.com/file/d/1XU7L3ocicY-AVJ_lWYPf4IDqgLRHrPef/view?usp=sharing`,
     name: `MASALA MIX MONOLOGUE`,
     description: `In this activity, participants are required to present a spontaneous monologue or short story by combining three random elements drawn from three separate bowls.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933386/nitrutsav-2026/wxwai2wwhivwamjlfyx6.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110714/nitrutsav-2026/wxwai2wwhivwamjlfyx6.webp`,
   },
   {
     club: `THIRD EYE`,
@@ -128,7 +128,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     photography enthusiasts across colleges, the event celebrates visual
     storytelling, creativity, and perspective through powerful frames
     captured over a limited time.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933371/nitrutsav-2026/apswlcwgndnrxhxmguvz.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110715/nitrutsav-2026/apswlcwgndnrxhxmguvz.webp`,
   },
   {
     club: `Rotaract`,
@@ -139,7 +139,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     decode riddles through logical thinking, teamwork, and real-world
     kindness challenges. The event promotes problem-solving skills,
     discipline, and social responsibility in a fun, engaging format.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933387/nitrutsav-2026/egcfkclnnahrflnawxvg.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110717/nitrutsav-2026/egcfkclnnahrflnawxvg.webp`,
   },
   {
     club: `SDG Campus Club`,
@@ -149,7 +149,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     development policies while hidden imposters work to secretly sabotage the
     city. With bluffing, debate, and strategic decision-making, players must
     identify traitors and keep the city alive before everything falls apart.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933389/nitrutsav-2026/yxqaojqsiv8roidnhkpe.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110718/nitrutsav-2026/yxqaojqsiv8roidnhkpe.webp`,
   },
   {
     club: `SDG Campus Club`,
@@ -159,7 +159,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     sports, and trending topics with sustainability and SDGs. Featuring rapid-fire
     rounds, buzzers, visuals, and surprise twists, it’s fast, fun, and
     competitive—where knowledge, speed, and strategy collide.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933391/nitrutsav-2026/vnr3rvjm58hnpy8va4os.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110719/nitrutsav-2026/vnr3rvjm58hnpy8va4os.webp`,
   },
   {
     club: `Inquizzitive`,
@@ -171,7 +171,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     to test participants across diverse domains including culture,
     history, entertainment, science, current affairs, and Indian
     heritage.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933376/nitrutsav-2026/n9ky6wivlfkn3sjjfp1j.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110720/nitrutsav-2026/n9ky6wivlfkn3sjjfp1j.webp`,
   },
   {
     club: `INQUIZZITIVE`,
@@ -182,7 +182,7 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     to test participants across diverse domains including culture,
     history, entertainment, science, current affairs, and Indian
     heritage.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933379/nitrutsav-2026/mgg76r28hwzdhkegns3y.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110722/nitrutsav-2026/mgg76r28hwzdhkegns3y.webp`,
   },
   {
     club: `INQUIZZITIVE`,
@@ -193,20 +193,20 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     to test participants across diverse domains including culture,
     history, entertainment, science, current affairs, and Indian
     heritage.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933377/nitrutsav-2026/b5cjk2fo4gqpejxd7cpl.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110723/nitrutsav-2026/b5cjk2fo4gqpejxd7cpl.webp`,
   },
   {
     club: `HeartBeats`,
     rulebook: `https://drive.google.com/open?id=10-yAE1Oqn45CDvbIgFJxk50ZvreXx0AA`,
     name: `Beyond the Beats`,
     description: ``,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768933373/nitrutsav-2026/pmkdgmdevcyndagf5gkc.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110724/nitrutsav-2026/pmkdgmdevcyndagf5gkc.webp`,
   },
   {
     club: `Chitraang`,
     rulebook: `https://drive.google.com/open?id=1t2zNQ8uBCxKJYtz4XmLWF7A4GmDihb03`,
     name: `Palette`,
     description: ``,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768938064/nitrutsav-2026/mk3m1jx3hzb971idgypc.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110725/nitrutsav-2026/mk3m1jx3hzb971idgypc.webp`,
   },
 ];

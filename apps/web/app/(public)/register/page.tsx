@@ -144,15 +144,15 @@ export default function RegisterPage() {
       <div className="max-w-full mx-auto relative z-10 mt-10 md:mt-24">
         <SectionHeading title="Registrations" />
         <ProgressBar currentStep={currentStep} />
+        <div className="mb-5 text-right max-w-5xl mx-auto">
+          <Link
+            href="/register/mun"
+            className="text-white font-bold hover:underline underline-offset-4"
+          >
+            Please follow this link to register for NITRMUN (MUN)
+          </Link>
+        </div>
         <div className="max-w-5xl mx-auto p-4 md:p-6 font-inria form-container gradient-border">
-          <div className="mb-8 text-right">
-            <Link
-              href="/register/mun"
-              className="text-white font-bold hover:underline underline-offset-4"
-            >
-              Please follow this link to register for NITRMUN (MUN)
-            </Link>
-          </div>
           {currentStep === "auth" && (
             <AuthStep onGoogleSignIn={handleGoogleSignIn} isLoading={isLoading} error={error} />
           )}

@@ -59,6 +59,9 @@ export default function MunRegisterPage() {
 
         {currentStep !== "info" && <MunProgressBar currentStep={currentStep} />}
         <div className="max-w-5xl mx-auto p-6 font-inria form-container gradient-border">
+          <p className="text-white/70 text-sm text-center mb-4">
+            Note: Registering for MUN also grants you access to NITRUTSAV 2026.
+          </p>
           {showBackButton && (
             <button
               onClick={handleBackStep}

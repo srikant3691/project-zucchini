@@ -13,7 +13,7 @@ export const contactsFirstRow: ContactPerson[] = [
     role: "(Convenor-NITRUTSAV)",
     phone: "+91-76828 66577",
     image:
-      "https://res.cloudinary.com/dz4lwydkp/image/upload/v1767477421/nitrutsav-2026/ovwfvrsrhkkw4iigcdzk.jpg",
+      "https://res.cloudinary.com/domaovjhf/image/upload/v1767961273/nitrutsav-2026/ovwfvrsrhkkw4iigcdzk.jpg",
   },
   {
     id: "sidheshwar",
@@ -21,7 +21,7 @@ export const contactsFirstRow: ContactPerson[] = [
     role: "(Convenor-NITRUTSAV)",
     phone: "+91-63718 72187",
     image:
-      "https://res.cloudinary.com/drf3eatfm/image/upload/v1767139442/nitrutsav-2026/eo2bsfu5xno4fe0dqrse.jpg",
+      "https://res.cloudinary.com/domaovjhf/image/upload/v1767961274/nitrutsav-2026/eo2bsfu5xno4fe0dqrse.jpg",
   },
 ];
 
@@ -32,7 +32,7 @@ export const contactsSecondRow: ContactPerson[] = [
     role: "(Organizing Team-NITRUTSAV)",
     phone: "+91-78550 34580",
     image:
-      "https://res.cloudinary.com/drf3eatfm/image/upload/v1767139442/nitrutsav-2026/eo2bsfu5xno4fe0dqrse.jpg",
+      "https://res.cloudinary.com/domaovjhf/image/upload/v1767961274/nitrutsav-2026/eo2bsfu5xno4fe0dqrse.jpg",
   },
   {
     id: "shrinmaya",
@@ -40,7 +40,7 @@ export const contactsSecondRow: ContactPerson[] = [
     role: "(Organizing Team-NITRUTSAV)",
     phone: "+91-72052 73401",
     image:
-      "https://res.cloudinary.com/drf3eatfm/image/upload/v1767139442/nitrutsav-2026/eo2bsfu5xno4fe0dqrse.jpg",
+      "https://res.cloudinary.com/domaovjhf/image/upload/v1767961274/nitrutsav-2026/eo2bsfu5xno4fe0dqrse.jpg",
   },
 ];
 

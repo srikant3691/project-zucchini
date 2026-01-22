@@ -7,7 +7,7 @@ export const FlagshipEvents = [
 participants present short street plays to highlight real-life issues and social messages. The
 event tests creativity, teamwork, stage presence, and effective communication through
 powerful storytelling, expressions, and collective performance in a public setting.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768923247/nitrutsav-2026/hrbyj5yffjqjrd9chpmp.jpg`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110734/nitrutsav-2026/hrbyj5yffjqjrd9chpmp.jpg`,
   },
   {
     club: `RITVIC`,
@@ -26,7 +26,7 @@ are challenged to deliver depth, clarity, and conviction in every moment.
 Whether you choose to move hearts, provoke thought, or spark laughter,
 Monoact is your chance to be seen, heard, and remembered.
 Bring your story. Own the stage. Let the act speak.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768923958/nitrutsav-2026/vcgifs3y0xsmolsgtmii.jpg`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110735/nitrutsav-2026/vcgifs3y0xsmolsgtmii.jpg`,
   },
   {
     club: `The Mavericks`,
@@ -34,7 +34,7 @@ Bring your story. Own the stage. Let the act speak.`,
     name: `BREAKBEATS`,
     description: `Be it hip hop, house, breaking, popping, krump, locking, every move matters. Showcase your
 groove and style and let the streets come alive.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768924058/nitrutsav-2026/k9nqakkcqkyj1ypeeczm.jpg`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110736/nitrutsav-2026/ijdcvf6ygzrk4zmekdac.webp`,
   },
   {
     club: `Synergy`,
@@ -45,27 +45,27 @@ Where rhythm meets rebellion and passion takes the spotlight.
 From powerful solos and dynamic duos to electrifying crews, every style finds its space to shine.
 With high-energy performances, bold creativity, and roaring cheers, Footloose isn’t just a
 competition — it’s a celebration of pure dance spirit.`,
-    posterurl: `https://res.cloudinary.com/drf3eatfm/image/upload/v1768923870/nitrutsav-2026/gkheoxjxxkp9sxzdishk.jpg`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110737/nitrutsav-2026/dyf74wjj9s2uhxh8eauw.webp`,
   },
   {
     club: ``,
     rulebook: ``,
     name: `Coming Soon`,
     description: `Coming soon`,
-    posterurl: `https://res.cloudinary.com/dz4lwydkp/image/upload/v1767560704/nitrutsav-2026/e3f3vljzfvu8d5g4zwxx.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1767961282/nitrutsav-2026/e3f3vljzfvu8d5g4zwxx.webp`,
   },
   {
     club: ``,
     rulebook: ``,
     name: `Coming Soon`,
     description: `Coming soon`,
-    posterurl: `https://res.cloudinary.com/dz4lwydkp/image/upload/v1767560704/nitrutsav-2026/e3f3vljzfvu8d5g4zwxx.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1767961282/nitrutsav-2026/e3f3vljzfvu8d5g4zwxx.webp`,
   },
   {
     club: ``,
     rulebook: ``,
     name: `Coming Soon`,
     description: `Coming soon`,
-    posterurl: `https://res.cloudinary.com/dz4lwydkp/image/upload/v1767560704/nitrutsav-2026/e3f3vljzfvu8d5g4zwxx.webp`,
+    posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1767961282/nitrutsav-2026/e3f3vljzfvu8d5g4zwxx.webp`,
   },
 ];

@@ -171,7 +171,7 @@ export const OPEN_GRAPH = {
   locale: SITE_CONFIG.locale,
   images: [
     {
-      url: "https://res.cloudinary.com/dz4lwydkp/image/upload/v1767699906/Screenshot_2026-01-06_171418_nu1ktk.png",
+      url: "https://res.cloudinary.com/domaovjhf/image/upload/v1767961236/Screenshot_2026-01-06_171418_nu1ktk.png",
       width: 1200,
       height: 630,
       alt: "Nitrutsav 2026 - Carnival of Colors | NIT Rourkela",
