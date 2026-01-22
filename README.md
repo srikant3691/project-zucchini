@@ -1,7 +1,7 @@
 [![Starware](https://img.shields.io/badge/Starware-⭐-black?labelColor=f9b00d)](https://github.com/zepfietje/starware)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Contributors][contributors-shield]][contributors-url]
@@ -247,6 +247,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="http://tiyas.vercel.app"><img src="https://avatars.githubusercontent.com/u/191564417?v=4?s=100" width="100px;" alt="Tiyas"/><br /><sub><b>Tiyas</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=Tiyas04" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/srikant3691"><img src="https://avatars.githubusercontent.com/u/180011583?v=4?s=100" width="100px;" alt="Srikant Panigrahy"/><br /><sub><b>Srikant Panigrahy</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=srikant3691" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ayantik2006"><img src="https://avatars.githubusercontent.com/u/99005057?v=4?s=100" width="100px;" alt="Ayantik Sarkar"/><br /><sub><b>Ayantik Sarkar</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=ayantik2006" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/AshutoshMishra1615"><img src="https://avatars.githubusercontent.com/u/135343059?v=4?s=100" width="100px;" alt="AshutoshMishra1615"/><br /><sub><b>AshutoshMishra1615</b></sub></a><br /><a href="https://github.com/dscnitrourkela/project-zucchini/commits?author=AshutoshMishra1615" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
