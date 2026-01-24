@@ -90,7 +90,7 @@ export function CompleteStep({ userId, referralCode }: CompleteStepProps) {
       </p>
       <Link
         href={"/"}
-        className="gradient-border-btn w-full py-3 px-6 text-white font-semibold hover:bg-white/30 transition-all duration-200 flex items-center justify-center gap-2 font-inria"
+        className="bg-white/10 rounded-lg w-full py-3 px-6 text-white font-semibold hover:bg-white/30 transition-all duration-200 flex items-center justify-center gap-2 font-inria"
       >
         <Home className="w-5 h-5" />
         Go to Home

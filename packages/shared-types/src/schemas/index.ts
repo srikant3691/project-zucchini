@@ -131,11 +131,7 @@ export const RegistrationSchema = z.object({
 
   rollNumber: z.string().min(1, MESSAGES.REQUIRED("Roll number")),
 
-  referralCode: z
-    .string()
-    .regex(PATTERNS.REFERRAL, MESSAGES.INVALID("referral code"))
-    .optional()
-    .or(z.literal("")),
+  referralCode: z.string().optional().or(z.literal("")),
 
   permission: z.string().url(MESSAGES.REQUIRED("Permission document")),
 

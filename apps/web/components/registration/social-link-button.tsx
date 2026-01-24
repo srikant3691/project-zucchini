@@ -13,7 +13,7 @@ export function SocialLinkButton({ link }: SocialLinkButtonProps) {
       href={link.href}
       target={link.external ? "_blank" : undefined}
       rel={link.external ? "noopener noreferrer" : undefined}
-      className="gradient-border-btn w-full py-3 px-6 text-white font-semibold hover:bg-white/30 transition-all duration-200 flex items-center justify-center gap-2 font-inria"
+      className="bg-white/10 rounded-lg w-full py-3 px-6 text-white font-semibold transition-all duration-200 flex items-center justify-center gap-2 font-inria"
     >
       <Icon className="w-5 h-5" />
       {link.label}
