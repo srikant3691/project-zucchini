@@ -31,10 +31,8 @@ export default function MerchPage() {
 
   return (
     <div className="relative w-full min-h-screen py-40 px-4 md:px-8 font-sans">
-      {/* Fixed Background */}
-      <div className="fixed inset-0 w-full h-full events-bg z-0" />
+      <div className="fixed inset-0 w-full h-full back-image -z-10" />
 
-      {/* Overlay/Mask */}
       <div
         className="
             fixed inset-0 w-full h-full bg-black/55 pointer-events-none

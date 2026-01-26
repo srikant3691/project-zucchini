@@ -20,11 +20,7 @@ export default function SponsorsPage(): JSX.Element {
 
   return (
     <div className="bg-[#010005] w-full relative text-white min-h-screen flex flex-col items-center pb-20">
-      <img
-        className=" inset-0 w-full h-full object-cover fixed"
-        alt="Carnival Background"
-        src={background}
-      />
+      <img className="back-image-spons" alt="Carnival Background" src={background} />
 
       <div className="w-full max-w-[1440px] px-4 md:px-10 pt-32 z-10 flex flex-col items-center gap-16">
         {/* <div className=" flex-col items-center gap-6 mb-16 mt-20 flex">

@@ -10,7 +10,7 @@ export default function AboutPage() {
         <img className="w-full h-full object-cover" alt="Carnival Background" src={background} />
       </div> */}
 
-      <div className="fixed inset-0 w-full h-full events-bg -z-10" />
+      <div className="fixed inset-0 w-full h-full back-image -z-10" />
 
       <div
         className="
