@@ -30,7 +30,7 @@ Bring your story. Own the stage. Let the act speak.`,
   },
   {
     club: `The Mavericks`,
-    rulebook: `https://drive.google.com/open?id=1a-P23hwGLvu_dFluAw6dWzDQm3BQVMYd`,
+    rulebook: `https://drive.google.com/file/d/1SvK-powDY9DGwM44Vo_mruWecPP2DJL1/view?usp=sharing`,
     name: `BREAKBEATS`,
     description: `Be it hip hop, house, breaking, popping, krump, locking, every move matters. Showcase your
 groove and style and let the streets come alive.`,
