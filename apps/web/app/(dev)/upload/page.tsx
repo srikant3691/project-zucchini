@@ -1,6 +1,10 @@
 import CloudinaryUploader from "@/components/cloudinary-uploader";
+import { notFound } from "next/navigation";
 
 export default function UploadPage() {
+  if (process.env.NODE_ENV === "production") {
+    return notFound();
+  }
   return (
     <div className="min-h-screen bg-black py-12 px-4">
       <div className="max-w-5xl mx-auto  mt-20 font-inria">

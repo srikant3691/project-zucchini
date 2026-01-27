@@ -72,6 +72,7 @@ html {
   --font-berlins: var(--font-berlins);
   --breakpoint-llg: 1280px;
   --breakpoint-lmd: 1100px;
+  --breakpoint-lsmd: 900px;
   --breakpoint-llmd: 800px;
   --breakpoint-llsmd: 580px;
   --breakpoint-lsm: 470px;

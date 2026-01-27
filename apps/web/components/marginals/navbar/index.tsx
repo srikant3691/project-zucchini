@@ -71,9 +71,9 @@ export default function Header() {
         isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
       }`}
     >
-      <div className="max-w-[85rem] mx-auto flex items-center justify-between">
+      <div className="max-w-[95rem] mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <Link href="/" className="md:hidden relative size-12 z-50">
+          <Link href="/" className="lsmd:hidden relative size-12 z-50">
             <Image
               src={navbarImages.mobileLogo}
               alt="Nitrutsav Logo"
@@ -82,7 +82,7 @@ export default function Header() {
             />
           </Link>
 
-          <nav className="hidden md:flex gap-4 lmd:gap-8 lg:gap-12 text-white font-inria">
+          <nav className="hidden lsmd:flex gap-4 lsmd:gap-5 lmd:gap-8 llg:gap-12 text-white font-inria">
             {navItems.map((item) => {
               const isActive = isActiveRoute(item.href);
               return (
@@ -92,6 +92,7 @@ export default function Header() {
                   className={`relative group text-base lg:text-lg  tracking-wide transition-opacity duration-300 ${
                     isActive ? "opacity-100" : "opacity-60 hover:opacity-100"
                   }`}
+                  target={item.target || "_self"}
                 >
                   {item.label}
                   <div
@@ -107,16 +108,16 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className="block md:hidden">
+        <div className="block lsmd:hidden">
           <MobileMusicVisualizer />
         </div>
 
         <div className=" flex items-center gap-2 md:gap-4 lmd:gap-12">
-          <div className="hidden md:block">
+          <div className="hidden lsmd:block">
             <CountdownTimer />
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden lsmd:block">
             <MusicVisualizer />
           </div>
 
@@ -124,7 +125,7 @@ export default function Header() {
           {isEventsPage && (
             <button
               onClick={toggleCategoryMenu}
-              className="md:hidden relative w-8 h-8 focus:outline-none z-50"
+              className="lsmd:hidden relative w-8 h-8 focus:outline-none z-50"
               aria-label="Event Categories"
             >
               <Image
@@ -141,7 +142,7 @@ export default function Header() {
           {/* Mobile Burger Menu */}
           <button
             onClick={toggleMenu}
-            className="md:hidden text-white relative w-8 h-8 focus:outline-none z-50"
+            className="lsmd:hidden text-white relative w-8 h-8 focus:outline-none z-50"
           >
             <span
               className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
@@ -167,7 +168,7 @@ export default function Header() {
 
       {isMenuOpen && (
         <div
-          className="fixed inset-0 min-h-screen bg-black/70 flex flex-col items-center justify-center md:hidden backdrop-blur-sm"
+          className="fixed inset-0 min-h-screen bg-black/70 flex flex-col items-center justify-center lsmd:hidden backdrop-blur-sm"
           style={{
             zIndex: 45,
             animation: isClosing
@@ -182,7 +183,7 @@ export default function Header() {
             }
           }}
         >
-          <nav className="flex flex-col gap-8 text-white text-2xl text-center font-inria">
+          <nav className="flex flex-col gap-8 text-white text-2xl text-center font-inria -mt-20">
             {navItems.map((item) => {
               const isActive = isActiveRoute(item.href);
               const isEventItem = item.label === "Events";

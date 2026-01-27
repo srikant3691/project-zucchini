@@ -13,8 +13,14 @@ export const sponsors = [
   },
   {
     name: "Hotel Neelam",
-    href: "",
+    href: "https://www.instagram.com/the.neelam.restaurant/",
     logo: "https://res.cloudinary.com/domaovjhf/image/upload/v1769110964/zz0hja4mitnjngvwpt47_w4dhvy.png",
+    type: "Platinum Sponsor",
+  },
+  {
+    name: "Odisha Computer Application Centre",
+    href: "https://www.ocac.in",
+    logo: "https://res.cloudinary.com/dz4lwydkp/image/upload/v1769525498/nitrutsav-2026/xfbkdu4a8jkpfpdqxrpn.png",
     type: "Platinum Sponsor",
   },
   {
@@ -34,6 +40,18 @@ export const sponsors = [
     href: "https://www.easemytrip.com/",
     logo: "https://res.cloudinary.com/domaovjhf/image/upload/v1769111014/ndpnhsqaoxhgluo8fkr4_q6yvjt.svg",
     type: "Travel Partner",
+  },
+  {
+    name: "Odisha Shines",
+    href: "https://www.instagram.com/odishashines/",
+    logo: "https://res.cloudinary.com/dz4lwydkp/image/upload/v1769526043/nitrutsav-2026/hjif5ig5gouyskdqsa1p.jpg",
+    type: "Media Partner",
+  },
+  {
+    name: "Rourkela Shines",
+    href: "https://www.instagram.com/rourkelashines/",
+    logo: "https://res.cloudinary.com/dz4lwydkp/image/upload/v1769526112/nitrutsav-2026/y1nfr0nwiex92ibgqat5.jpg",
+    type: "Media Partner",
   },
 ];
 

@@ -76,3 +76,6 @@ export const imgNitrutsavFilled =
   "https://www.figma.com/api/mcp/asset/30138af7-72d1-4743-8d36-8ce06b3f8424";
 export const imgNitrutsavOutline =
   "https://www.figma.com/api/mcp/asset/69f1e7ac-1757-4150-81b4-d41d80b86609";
+
+export const BROCHURE_URL =
+  "https://drive.google.com/drive/folders/1mhJPIqkhvivsAPsKli1a7xEq2tXqdt91";

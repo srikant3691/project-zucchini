@@ -209,4 +209,18 @@ or deviation. It tests mental agility, vocabulary, and composure, as opponents c
     description: ``,
     posterurl: `https://res.cloudinary.com/domaovjhf/image/upload/v1769110725/nitrutsav-2026/mk3m1jx3hzb971idgypc.webp`,
   },
+  {
+    club: `Drill N' Bass`,
+    rulebook: `https://drive.google.com/open?id=1RES5JQjPuxgTqCu3vUCEq-TBYA3ECPRI`,
+    name: `Backalley Rumble (Rap Battle)`,
+    description: ``,
+    posterurl: `https://res.cloudinary.com/dz4lwydkp/image/upload/v1769527634/nitrutsav-2026/dbhswayzmuolwqu9dffz.png`,
+  },
+  {
+    club: `Drill N' Bass`,
+    rulebook: `https://drive.google.com/open?id=1cpSQtcGMCC3EDWRg0-YstHJexBgrSewr`,
+    name: `DnB Unplugged`,
+    description: ``,
+    posterurl: `https://res.cloudinary.com/dz4lwydkp/image/upload/v1769527641/nitrutsav-2026/eyqrneqjhggh0kwls5np.png`,
+  },
 ];

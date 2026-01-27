@@ -1,5 +1,12 @@
 export const ProShows = [
   {
+    club: ``,
+    rulebook: ``,
+    name: `Olly Esse`,
+    description: `DJ Night Headliner`,
+    posterurl: `https://res.cloudinary.com/dz4lwydkp/image/upload/v1769527792/nitrutsav-2026/krwjrjnhkdllc6s6pekq.jpg`,
+  },
+  {
     club: `HeartBeats`,
     rulebook: `https://drive.google.com/open?id=1MW7JKs6P3QLbeyG16vx1MrIc0aEUvlWA`,
     name: `Maktub`,
