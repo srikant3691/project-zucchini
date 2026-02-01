@@ -4,8 +4,8 @@ import { useApi } from "@repo/shared-utils";
 import { toast } from "sonner";
 import { Suspense, useEffect, useState } from "react";
 import { useAuth } from "@/contexts/auth-context";
-import { useSearchParams, useRouter } from "next/navigation";
-import { Check, X, Home, ArrowLeft } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { Check, X, ArrowLeft, Mail } from "lucide-react";
 import Link from "next/link";
 
 interface TransactionDetails {
@@ -19,6 +19,7 @@ interface TransactionDetails {
 function SuccessContent() {
   const [paymentStatus, setPaymentStatus] = useState<"success" | "failure" | "pending">("pending");
   const [transactionDetails, setTransactionDetails] = useState<TransactionDetails | null>(null);
+  const [resendLoading, setResendLoading] = useState(false);
   const searchParams = useSearchParams();
   const { user, isLoading: authLoading } = useAuth();
   const [fromMUN, setFromMUN] = useState(false);
@@ -60,6 +61,28 @@ function SuccessContent() {
     verifyPayment();
   }, [user, searchParams]);
 
+  const handleResendEmail = async () => {
+    if (!transactionDetails?.txnid) return;
+
+    setResendLoading(true);
+    try {
+      const res = await execute("resend-email", {
+        method: "POST",
+        body: JSON.stringify({ txnid: transactionDetails.txnid }),
+      });
+
+      if (res.success) {
+        toast.success("Confirmation email sent successfully!");
+      } else {
+        toast.error(res.error || "Failed to send email");
+      }
+    } catch {
+      toast.error("Failed to send email");
+    } finally {
+      setResendLoading(false);
+    }
+  };
+
   if (authLoading || isLoading || paymentStatus === "pending") return <LoadingState />;
 
   return (
@@ -67,7 +90,7 @@ function SuccessContent() {
       <div className="form-container mt-20 p-8 max-w-md w-full text-center">
         {paymentStatus === "success" ? (
           <>
-            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 bg-white/20 backdrop-blur-sm">
+            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
               <Check className="w-10 h-10 text-green-400" strokeWidth={3} />
             </div>
             <h1 className="text-3xl font-bold text-white mb-3 font-baloo">Payment Successful!</h1>
@@ -75,7 +98,7 @@ function SuccessContent() {
               Your payment has been verified successfully.
             </p>
             {transactionDetails && (
-              <div className="text-left bg-white/10 backdrop-blur-sm rounded-lg p-5 mt-6 space-y-2 font-inria">
+              <div className="text-left backdrop-blur-sm rounded-lg p-5 mt-6 space-y-2 font-inria">
                 <p className="text-white/90 text-sm">
                   <strong className="text-white">Transaction ID:</strong> {transactionDetails.txnid}
                 </p>
@@ -93,13 +116,23 @@ function SuccessContent() {
                 )}
               </div>
             )}
-            <Link
-              href={fromMUN ? "/register/mun" : "/register"}
-              className="gradient-border-btn w-full mt-6 py-3 px-6 text-white font-semibold hover:bg-white/30 transition-all duration-200 flex items-center justify-center gap-2 font-inria"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Go Back
-            </Link>
+            <div className="flex flex-col gap-3 mt-6">
+              <button
+                onClick={handleResendEmail}
+                disabled={resendLoading}
+                className="flex items-center justify-center gap-3 px-4 py-3 bg-white/10 hover:bg-white/20 rounded-xl text-white transition-all duration-200 font-inria border border-white/10 cursor-pointer"
+              >
+                <Mail className="w-5 h-5" />
+                {resendLoading ? "Sending..." : "Resend Confirmation Email"}
+              </button>
+              <Link
+                href={fromMUN ? "/register/mun" : "/register"}
+                className="flex items-center justify-center gap-3 px-4 py-3 bg-white/10 hover:bg-white/20 rounded-xl text-white transition-all duration-200 font-inria border border-white/10"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                Go Back
+              </Link>
+            </div>
           </>
         ) : (
           <>
@@ -114,7 +147,7 @@ function SuccessContent() {
             </p>
             <Link
               href={fromMUN ? "/register/mun" : "/register"}
-              className="gradient-border-btn w-full mt-6 py-3 px-6 text-white font-semibold hover:bg-white/30 transition-all duration-200 flex items-center justify-center gap-2 font-inria"
+              className="flex items-center justify-center gap-3 px-4 py-3 bg-white/10 hover:bg-white/20 rounded-xl text-white transition-all duration-200 font-inria border border-white/10"
             >
               <ArrowLeft className="w-5 h-5" />
               Go Back

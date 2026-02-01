@@ -3,7 +3,7 @@ import { createHash } from "crypto";
 import { handleResponse, requireAuth } from "@repo/shared-utils/server";
 import { createTransaction, getUserByFirebaseUid } from "@repo/database";
 import { handleError } from "@repo/shared-types";
-import { MUN_FEE, NITRUTSAV_FEES } from "@/config";
+import { MUN_FEE, NITRUTSAV_FEE } from "@/config";
 
 interface PaymentParams {
   key?: string;
@@ -33,22 +33,16 @@ function generateHash(params: PaymentParams, salt: string): string {
   const udf5 = (params.udf5 || "").trim();
 
   const hashString = `${key}|${txnid}|${amount}|${productinfo}|${firstname}|${email}|${udf1}|${udf2}|${udf3}|${udf4}|${udf5}||||||${salt.trim()}`;
-
-  console.log("Hash String:", hashString);
-
   return createHash("sha512").update(hashString).digest("hex");
 }
 
 function calculateAmount(
   type: "NITRUTSAV" | "MUN",
   isCollegeStudent: boolean,
-  committeeChoice?: string,
-  wantsAccommodation?: boolean
+  committeeChoice?: string
 ) {
   if (type === "NITRUTSAV") {
-    return wantsAccommodation
-      ? NITRUTSAV_FEES.withAccomodation
-      : NITRUTSAV_FEES.withoutAccomodation;
+    return NITRUTSAV_FEE;
   } else {
     const baseFee = isCollegeStudent ? MUN_FEE.college : MUN_FEE.school;
     return committeeChoice === "MOOT_COURT" ? baseFee * 3 : baseFee;
@@ -81,7 +75,7 @@ export async function POST(req: NextRequest) {
       userId = user.id;
     }
 
-    const amount = calculateAmount(type, isCollegeStudent, committeeChoice, wantsAccommodation);
+    const amount = calculateAmount(type, isCollegeStudent, committeeChoice);
 
     const transaction = await createTransaction(
       type,

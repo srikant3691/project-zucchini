@@ -4,7 +4,7 @@ import { type User } from "@repo/firebase-config";
 import { registrationFields, referralField } from "@/config/register";
 import { renderFormFields, SubmitButton, ErrorDisplay } from "@/utils/form";
 import { useRegistrationForm } from "@/hooks/use-registration-form";
-import { NITRUTSAV_FEES } from "@/config";
+import { NITRUTSAV_FEE } from "@/config";
 import NitrToggle from "./nitr-toggle";
 import AccommodationSelector from "./accommodation-selector";
 import InstituteField from "./institute-field";
@@ -29,9 +29,7 @@ export default function RegistrationForm({ user, onComplete }: RegistrationFormP
     handleSubmit,
   } = useRegistrationForm({ user, onComplete });
 
-  const registrationFee = wantsAccommodation
-    ? NITRUTSAV_FEES.withAccomodation
-    : NITRUTSAV_FEES.withoutAccomodation;
+  const registrationFee = NITRUTSAV_FEE;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">

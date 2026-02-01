@@ -30,7 +30,7 @@ export const updatePaymentStatusByTxnId = async (txnId: string, isVerified: bool
         .update(munRegistrationsTable)
         .set({ isVerified })
         .where(eq(munRegistrationsTable.teamId, transaction.teamId));
-      return true;
+      return { status: true, user: null };
     }
 
     if (!transaction || !transaction.userId) {
@@ -45,20 +45,47 @@ export const updatePaymentStatusByTxnId = async (txnId: string, isVerified: bool
     if (!user) {
       throw new ApiError(404, "User not found");
     }
-    return true;
+    return { status: true, user };
   });
 };
 
 export type TransactionStatus = "success" | "error";
 
 export const updateTransactionStatus = async (txnId: string, status: TransactionStatus) => {
-  const [transaction] = await db
-    .update(transactionsTable)
-    .set({ status })
-    .where(eq(transactionsTable.txnId, txnId))
-    .returning();
+  return await db.transaction(async (tx) => {
+    const isVerified = status === "success";
+    const [transaction] = await tx
+      .update(transactionsTable)
+      .set({ status, isVerified })
+      .where(eq(transactionsTable.txnId, txnId))
+      .returning();
 
-  return transaction;
+    if (!transaction) {
+      throw new ApiError(404, `Transaction not found: ${txnId}`);
+    }
+
+    if (transaction.teamId) {
+      await tx
+        .update(munRegistrationsTable)
+        .set({ isVerified })
+        .where(eq(munRegistrationsTable.teamId, transaction.teamId));
+
+      const [user] = await tx
+        .select()
+        .from(munRegistrationsTable)
+        .where(eq(munRegistrationsTable.teamId, transaction.teamId))
+        .limit(1);
+      return { result: true, user: { ...user, referralCode: "MUN" } };
+    }
+
+    const [user] = await tx
+      .update(usersTable)
+      .set({ isVerified })
+      .where(eq(usersTable.id, transaction.userId))
+      .returning();
+
+    return { result: true, user };
+  });
 };
 
 function generateTxnId(type: TransactionType): string {
@@ -105,4 +132,78 @@ export const createTransaction = async (
     .returning();
 
   return transaction;
+};
+
+export type EmailRecipient = {
+  type: TransactionType;
+  isVerified: boolean;
+  email: string;
+  name: string;
+  userId?: number;
+  referralCode?: string | null;
+};
+
+export const getTransactionWithUser = async (txnId: string): Promise<EmailRecipient | null> => {
+  // First try to find transaction
+  const [transaction] = await db
+    .select()
+    .from(transactionsTable)
+    .where(eq(transactionsTable.txnId, txnId));
+
+  if (!transaction) {
+    return null;
+  }
+
+  // If it's a MUN transaction (has teamId), get team leader from mun_registrations
+  if (transaction.teamId) {
+    const [munUser] = await db
+      .select({
+        email: munRegistrationsTable.email,
+        name: munRegistrationsTable.name,
+        isVerified: munRegistrationsTable.isVerified,
+      })
+      .from(munRegistrationsTable)
+      .where(eq(munRegistrationsTable.teamId, transaction.teamId))
+      .limit(1);
+
+    if (!munUser) {
+      return null;
+    }
+
+    return {
+      type: "MUN",
+      isVerified: munUser.isVerified,
+      email: munUser.email,
+      name: munUser.name,
+    };
+  }
+
+  // For NITRUTSAV, get user from users table
+  if (transaction.userId) {
+    const [user] = await db
+      .select({
+        id: usersTable.id,
+        email: usersTable.email,
+        name: usersTable.name,
+        isVerified: usersTable.isVerified,
+        referralCode: usersTable.referralCode,
+      })
+      .from(usersTable)
+      .where(eq(usersTable.id, transaction.userId));
+
+    if (!user) {
+      return null;
+    }
+
+    return {
+      type: "NITRUTSAV",
+      isVerified: user.isVerified,
+      email: user.email,
+      name: user.name,
+      userId: user.id,
+      referralCode: user.referralCode,
+    };
+  }
+
+  return null;
 };

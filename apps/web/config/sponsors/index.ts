@@ -24,6 +24,12 @@ export const sponsors = [
     type: "Platinum Sponsor",
   },
   {
+    name: "OHPC LTD",
+    href: "https://www.instagram.com/ohpc_ltd/",
+    logo: "https://res.cloudinary.com/dz4lwydkp/image/upload/v1769958121/nitrutsav-2026/p41qkul7ckjn76k798yr.png",
+    type: "Gold Sponsor",
+  },
+  {
     name: "SBI",
     href: "https://www.easemytrip.com/",
     logo: "https://res.cloudinary.com/domaovjhf/image/upload/v1769110981/k9tkpghhnuryfdgy50gp_z4wm2x.png",

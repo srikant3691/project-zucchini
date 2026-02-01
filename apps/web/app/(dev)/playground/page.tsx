@@ -3,7 +3,7 @@
 import Hero from "@/components/hero";
 const Playground = () => {
   return (
-    <div>
+    <div className="py-20">
       <Hero />
     </div>
   );

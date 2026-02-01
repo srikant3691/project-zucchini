@@ -1,6 +1,6 @@
 import { UserData } from "@/app/(public)/register/page";
 import RegistrationPaymentButton from "@/components/registration/registration-payment-button";
-import { NITRUTSAV_FEES } from "@/config";
+import { NITRUTSAV_FEE } from "@/config";
 
 interface PaymentStepProps {
   userData: UserData;
@@ -9,9 +9,7 @@ interface PaymentStepProps {
 }
 
 export function PaymentStep({ userData, paymentError, onPaymentFailure }: PaymentStepProps) {
-  const amount = userData.wantsAccommodation
-    ? NITRUTSAV_FEES.withAccomodation
-    : NITRUTSAV_FEES.withoutAccomodation;
+  const amount = NITRUTSAV_FEE;
 
   return (
     <div className="py-6 flex flex-col items-center justify-center">
@@ -23,9 +21,6 @@ export function PaymentStep({ userData, paymentError, onPaymentFailure }: Paymen
           Complete your payment to confirm your registration
         </p>
         <div className="inline-block bg-white/20 rounded-lg px-4 py-2 mb-2">
-          <p className="text-sm text-white/80">
-            {userData.wantsAccommodation ? "With Accommodation" : "Without Accommodation"}
-          </p>
           <p className="text-2xl font-bold text-white">₹{amount}</p>
         </div>
       </div>

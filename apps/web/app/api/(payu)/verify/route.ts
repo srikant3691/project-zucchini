@@ -1,14 +1,11 @@
 import { NextRequest } from "next/server";
 import { createHash } from "crypto";
 import axios from "axios";
-import { handleResponse, requireAuth } from "@repo/shared-utils/server";
+import { handleResponse } from "@repo/shared-utils/server";
 import { handleError } from "@repo/shared-types";
-import { updatePaymentStatusByTxnId } from "@repo/database";
 
 export async function GET(req: NextRequest) {
   try {
-    await requireAuth(req);
-
     const txnid = req.nextUrl.searchParams.get("txnid");
 
     if (!txnid) {
@@ -43,12 +40,8 @@ export async function GET(req: NextRequest) {
       data.transaction_details[txnid].status === "success" &&
       data.transaction_details[txnid].error_code === "E000";
 
-    const result = await updatePaymentStatusByTxnId(txnid, isPaymentVerified);
-    if (!result) {
-      return handleError(new Error("Failed to update payment status"));
-    }
     return handleResponse({
-      isVerified: result,
+      isVerified: isPaymentVerified,
       txnid,
       mihpayid: data.transaction_details[txnid].mihpayid,
       amt: data.transaction_details[txnid].amt,
